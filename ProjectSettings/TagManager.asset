@@ -42,16 +42,16 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: decort
     uniqueID: 111433253
     locked: 0
-  - name: New Layer 2
+  - name: objets
     uniqueID: 3516949713
     locked: 0
-  - name: New Layer 3
+  - name: perso
     uniqueID: 1936788757
     locked: 0
-  - name: New Layer 4
+  - name: ui
     uniqueID: 3036186391
     locked: 0
   - name: New Layer 5

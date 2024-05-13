@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 public class LightController : MonoBehaviour
 {
     public Light2D myLight;
-   public bool isLightOn = false;
+    [SerializeField] public bool isLightOn = true;
 
     void Update()
     {
