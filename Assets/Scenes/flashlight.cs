@@ -18,5 +18,17 @@ public class LightController : MonoBehaviour
             // Active ou d�sactive la lumi�re en fonction de l'�tat
             myLight.enabled = isLightOn;
         }
+
+        if (isLightOn == true);
+        {
+
+            myLight.enabled = isLightOn;
+        }
+        if (isLightOn == false) ;
+        {
+
+            myLight.enabled = isLightOn;
+        }
+
     }
 }

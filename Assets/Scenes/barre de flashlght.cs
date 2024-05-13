@@ -10,6 +10,7 @@ public class barredeflashlght : MonoBehaviour
     public float maxTime = 10f;
     private float currentTime;
     private float timeSinceOff = 0f;
+    private bool surchaufe = false;
 
     void Start()
     {
@@ -33,7 +34,9 @@ public class barredeflashlght : MonoBehaviour
                 currentTime = 0f;
             }
         }
-        else
+       
+       
+        else if (surchaufe == false)
         {
             currentTime = Mathf.Clamp(currentTime, 0f, maxTime);
             timeSinceOff += Time.deltaTime;
@@ -43,6 +46,29 @@ public class barredeflashlght : MonoBehaviour
                 slider.value = currentTime / maxTime;
             }
         }
+
+        if (slider.value <=0f)
+        {
+            surchaufe = true;
+           
+        }
+        if (surchaufe == true)
+       
+        {
+            lightController.isLightOn = false;
+            currentTime = Mathf.Clamp(currentTime, 0f, maxTime);
+            timeSinceOff += Time.deltaTime;
+            if (timeSinceOff >= 5f)
+            {
+                currentTime += Time.deltaTime;
+                slider.value = currentTime / maxTime;
+                surchaufe = false;
+            }
+            
+        }
+
+
     }
+
 }
 
