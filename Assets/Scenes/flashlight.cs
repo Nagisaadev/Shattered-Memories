@@ -24,7 +24,7 @@ public class LightController : MonoBehaviour
 
             myLight.enabled = isLightOn;
         }
-        if (isLightOn == false) ;
+        if (isLightOn == false);
         {
 
             myLight.enabled = isLightOn;

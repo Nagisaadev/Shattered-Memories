@@ -20,7 +20,7 @@ public class barredeflashlght : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(lightController.isLightOn);
+        
         if (lightController.isLightOn)
         {
             timeSinceOff = 0f;
