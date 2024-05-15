@@ -42,9 +42,14 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = localScale;
             }
         }
+        if (isHidden)
+        {
+            rb.velocity = new Vector2(0, 0);
 
-        // Si le joueur est en collision avec une cachette et appuie sur la touche "E"
-        if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
+        }
+
+            // Si le joueur est en collision avec une cachette et appuie sur la touche "E"
+            if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
         {
             isHidden = !isHidden; // Inverser l'état de caché/non caché
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
