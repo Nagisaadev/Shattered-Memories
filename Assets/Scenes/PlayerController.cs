@@ -6,10 +6,19 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 localScale;
     private bool isInCollisionWithCompteur = false;
+    public bool activation = false;
+ 
+   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Récupérer le composant Rigidbody2D attaché au joueur
         localScale = transform.localScale; // Sauvegarder l'échelle initiale du joueur
+
+
+
+      
+
+
     }
 
     void Update()
@@ -38,13 +47,18 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (isInCollisionWithCompteur = true)
+        if (isInCollisionWithCompteur ==true)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
             if (Input.GetButtonDown("Fire1"))
             {
                 Debug.Log("Fire1 pressed while in collision with Compteur");
-                // Ajoutez ici le code à exécuter lorsque Fire1 est pressé
+                activation = true;
+            }
+            if (Input.GetButtonDown("Cancel"));
+            {
+
+                activation = false;
             }
         }
 
@@ -70,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Exited trigger with Compteur");
             isInCollisionWithCompteur = false;
+
         }
     }
 

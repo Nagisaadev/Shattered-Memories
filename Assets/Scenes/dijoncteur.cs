@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class dijoncteur : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class dijoncteur : MonoBehaviour
 
     void Start()
     {
-        // Initialiser le texte de chaque TextMeshProUGUI
+        
         for (int i = 0; i < Nombretexts.Length; i++)
         {
             Nombretexts[i].text = chiffres[i].ToString();
