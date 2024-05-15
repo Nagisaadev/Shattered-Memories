@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (isInCollisionWithCompteur == true)
+        if (isInCollisionWithCompteur = true)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
             if (Input.GetButtonDown("Fire1"))
