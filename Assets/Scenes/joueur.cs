@@ -9,7 +9,10 @@ public class PlayerController : MonoBehaviour
     private bool isInCollisionWithCompteur = false;
     private bool isInCollisionWithCachette = false;
     private bool isHidden = false; // Variable pour suivre l'état du joueur (caché ou non)
-
+    private bool isInCollisionWithPortableObject = false;
+    private GameObject portableObject = null;
+    public GameObject obj;
+    private bool isCarryingObject = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Récupérer le composant Rigidbody2D attaché au joueur
@@ -18,25 +21,20 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Récupérer les entrées de l'axe horizontal et vertical
+        Debug.Log("L'objet est il porté : " +isCarryingObject);
+        Debug.Log(isInCollisionWithPortableObject);
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        
 
-        // Si le joueur est caché, ne pas lui permettre de se déplacer
         if (!isHidden)
         {
-            // Calculer le vecteur de déplacement
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
-
-            // Appliquer la force de déplacement au Rigidbody2D
             rb.velocity = movement;
-
-            // Symétrie du personnage si déplacement vers la gauche
             if (moveHorizontal < 0)
             {
                 transform.localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
             }
-            // Symétrie du personnage si déplacement vers la droite
             else if (moveHorizontal > 0)
             {
                 transform.localScale = localScale;
@@ -55,6 +53,21 @@ public class PlayerController : MonoBehaviour
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
             // Ajoutez ici le code à exécuter lorsque le joueur entre/sort de la cachette
         }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (isCarryingObject) // Si le joueur porte déjà un objet, relâchez-le
+            {
+                Debug.Log("F key pressed to drop the Portable Object");
+                DropObject();
+            }
+            else if (isInCollisionWithPortableObject && portableObject != null) // Si un objet est en collision et n'est pas déjà porté, ramassez-le
+            {
+                Debug.Log("F key pressed while in collision with Portable Object");
+                PickUpObject(portableObject);
+            }
+        }
+        Debug.Log(portableObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -68,6 +81,12 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Entered trigger with Cachette");
             isInCollisionWithCachette = true;
+        }
+        if (other.gameObject.CompareTag("portableObject"))
+        {
+            Debug.Log("Entered trigger with Portable Object");
+            isInCollisionWithPortableObject = true;
+            portableObject = other.gameObject;
         }
     }
 
@@ -83,5 +102,32 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Exited trigger with Cachette");
             isInCollisionWithCachette = false;
         }
+        if (other.gameObject.CompareTag("portableObject"))
+        {
+            Debug.Log("Entered trigger with Portable Object");
+            isInCollisionWithPortableObject = true;
+            portableObject = other.gameObject; // Initialisation de portableObject avec l'objet en collision
+        }
+    }
+    void PickUpObject(GameObject obj)
+    {
+        obj.SetActive(false); // Désactivez le rendu de l'objet
+        isCarryingObject = true; // Activez l'état de portage de l'objet
+
+        // Positionnez l'objet près du joueur
+        
+    }
+
+    void DropObject()
+    {
+        if (portableObject != null) // Vérifiez que l'objet est différent de null avant de lâcher
+        {
+            portableObject.SetActive(true); // Réactivez le rendu de l'objet
+            obj.transform.position = transform.position + transform.right;
+            isCarryingObject = false; // Désactivez l'état de portage de l'objet
+            portableObject = null; // Réinitialisez l'objet porté
+            
+        }
+
     }
 }
