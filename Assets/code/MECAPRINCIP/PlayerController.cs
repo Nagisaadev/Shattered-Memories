@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Rendering.Universal;
 
+
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f; // Vitesse de déplacement du joueur
@@ -10,19 +11,19 @@ public class PlayerController : MonoBehaviour
     private bool isInCollisionWithCompteur = false;
     public bool activation = false;
     public GameObject dijoncteur;
-    
+    private Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Récupérer le composant Rigidbody2D attaché au joueur
         localScale = transform.localScale; // Sauvegarder l'échelle initiale du joueur
-
+        animator = GetComponent<Animator>();
 
 
 
         dijoncteur.SetActive(false);
-        
 
+       
 
     }
 
@@ -31,12 +32,22 @@ public class PlayerController : MonoBehaviour
         // Récupérer les entrées de l'axe horizontal et vertical
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
+        
         // Calculer le vecteur de déplacement
         Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
 
         // Appliquer la force de déplacement au Rigidbody2D
         rb.velocity = movement;
+
+        if (rb.velocity == movement)
+        {
+            animator.SetBool("isrunning",true);
+        }
+
+        if (rb.velocity == new Vector2(0f,0f))
+        {
+            animator.SetBool("isrunning", false);
+        }
 
         // Symétrie du personnage si déplacement vers la gauche
         if (moveHorizontal < 0)
