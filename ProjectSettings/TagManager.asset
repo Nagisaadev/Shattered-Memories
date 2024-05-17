@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Wall
   - compteur
+  - cachette
+  - portableObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - obstacles
   - Water
   - UI
   - 

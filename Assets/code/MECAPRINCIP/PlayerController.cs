@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.Rendering.Universal;
-
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +7,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 localScale;
     private bool isInCollisionWithCompteur = false;
+    private bool isInCollisionWithCachette = false;
+    private bool isHidden = false; // Variable pour suivre l'état du joueur (caché ou non)
+    private bool isInCollisionWithPortableObject = false;
+    private GameObject portableObject = null;
+    public GameObject obj;
+    private bool isCarryingObject = false;
+    public GameObject player;
+    private SpriteRenderer spriteRenderer;
     public bool activation = false;
     public GameObject dijoncteur;
     private Animator animator;
@@ -16,54 +22,80 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Récupérer le composant Rigidbody2D attaché au joueur
+        spriteRenderer = GetComponent<SpriteRenderer>();
         localScale = transform.localScale; // Sauvegarder l'échelle initiale du joueur
         animator = GetComponent<Animator>();
 
-
-
         dijoncteur.SetActive(false);
-
-       
-
     }
 
     void Update()
     {
-        // Récupérer les entrées de l'axe horizontal et vertical
+        Debug.Log("L'objet est il porté : " + isCarryingObject);
+        Debug.Log(isInCollisionWithPortableObject);
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-        
-        // Calculer le vecteur de déplacement
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
 
-        // Appliquer la force de déplacement au Rigidbody2D
-        rb.velocity = movement;
-
-        if (rb.velocity == movement)
+        if (!isHidden)
         {
-            animator.SetBool("isrunning",true);
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
+            rb.velocity = movement;
+
+            if (moveHorizontal < 0)
+            {
+                transform.localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
+            }
+            else if (moveHorizontal > 0)
+            {
+                transform.localScale = localScale;
+            }
+
+            if (rb.velocity == movement)
+            {
+                animator.SetBool("isrunning", true);
+            }
+
+            if (rb.velocity == new Vector2(0f, 0f))
+            {
+                animator.SetBool("isrunning", false);
+            }
         }
 
-        if (rb.velocity == new Vector2(0f,0f))
-        {
-            animator.SetBool("isrunning", false);
-        }
+      
 
-        // Symétrie du personnage si déplacement vers la gauche
-        if (moveHorizontal < 0)
+        if (isHidden)
         {
-            transform.localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
-        }
-        // Symétrie du personnage si déplacement vers la droite
-        else if (moveHorizontal > 0)
-        {
-            transform.localScale = localScale;
+            rb.velocity = new Vector2(0, 0);
 
-        
+
         }
 
 
-        if (isInCollisionWithCompteur ==true)
+        if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
+        {
+            isHidden = !isHidden;
+            spriteRenderer.enabled = !isHidden;
+            Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (isCarryingObject)
+            {
+                Debug.Log("F key pressed to drop the Portable Object");
+                DropObject();
+            }
+            else if (isInCollisionWithPortableObject && portableObject != null)
+            {
+                Debug.Log("F key pressed while in collision with Portable Object");
+                PickUpObject(portableObject);
+            }
+        }
+        Debug.Log(portableObject);
+    
+        // Combinaison des fonctionnalités uniques du deuxième script
+        if (isInCollisionWithCompteur == true)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
             if (Input.GetButtonDown("Fire1"))
@@ -71,21 +103,12 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Fire1 pressed while in collision with Compteur");
                 dijoncteur.SetActive(true);
             }
-            if (Input.GetButtonDown("Cancel")) 
+            if (Input.GetButtonDown("Cancel"))
             {
-
                 dijoncteur.SetActive(false);
             }
         }
-
-
-
-
-
-
-
     }
-    
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -93,11 +116,19 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Entered trigger with Compteur");
             isInCollisionWithCompteur = true;
-
+        }
+        if (other.gameObject.CompareTag("cachette"))
+        {
+            Debug.Log("Entered trigger with Cachette");
+            isInCollisionWithCachette = true;
+        }
+        if (other.gameObject.CompareTag("portableObject"))
+        {
+            Debug.Log("Entered trigger with Portable Object");
+            isInCollisionWithPortableObject = true;
+            portableObject = other.gameObject;
         }
     }
-
-   
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -105,14 +136,39 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Exited trigger with Compteur");
             isInCollisionWithCompteur = false;
-
+        }
+        if (other.gameObject.CompareTag("cachette"))
+        {
+            Debug.Log("Exited trigger with Cachette");
+            isInCollisionWithCachette = false;
+        }
+        if (other.gameObject.CompareTag("portableObject"))
+        {
+            Debug.Log("Entered trigger with Portable Object");
+            isInCollisionWithPortableObject = true;
+            portableObject = other.gameObject;
         }
     }
 
+        void PickUpObject(GameObject obj)
+    {
+        obj.SetActive(false);
+        isCarryingObject = true;
 
 
 
+    }
 
+    void DropObject()
+    {
+        if (portableObject != null)
+        {
+            portableObject.SetActive(true);
+            obj.transform.position = transform.position + transform.right;
+            isCarryingObject = false;
+            portableObject = null;
 
+        }
 
+    }
 }
