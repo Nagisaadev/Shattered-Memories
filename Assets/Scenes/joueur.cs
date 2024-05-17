@@ -51,23 +51,23 @@ public class PlayerController : MonoBehaviour
 
         }
 
-            // Si le joueur est en collision avec une cachette et appuie sur la touche "E"
+            
             if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
         {
             isHidden = !isHidden;
             spriteRenderer.enabled = !isHidden;
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
-            // Ajoutez ici le code à exécuter lorsque le joueur entre/sort de la cachette
+           
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (isCarryingObject) // Si le joueur porte déjà un objet, relâchez-le
+            if (isCarryingObject) 
             {
                 Debug.Log("F key pressed to drop the Portable Object");
                 DropObject();
             }
-            else if (isInCollisionWithPortableObject && portableObject != null) // Si un objet est en collision et n'est pas déjà porté, ramassez-le
+            else if (isInCollisionWithPortableObject && portableObject != null) 
             {
                 Debug.Log("F key pressed while in collision with Portable Object");
                 PickUpObject(portableObject);
@@ -112,26 +112,26 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Entered trigger with Portable Object");
             isInCollisionWithPortableObject = true;
-            portableObject = other.gameObject; // Initialisation de portableObject avec l'objet en collision
+            portableObject = other.gameObject; 
         }
     }
     void PickUpObject(GameObject obj)
     {
-        obj.SetActive(false); // Désactivez le rendu de l'objet
-        isCarryingObject = true; // Activez l'état de portage de l'objet
+        obj.SetActive(false); 
+        isCarryingObject = true; 
 
-        // Positionnez l'objet près du joueur
+
         
     }
 
     void DropObject()
     {
-        if (portableObject != null) // Vérifiez que l'objet est différent de null avant de lâcher
+        if (portableObject != null) 
         {
-            portableObject.SetActive(true); // Réactivez le rendu de l'objet
+            portableObject.SetActive(true); 
             obj.transform.position = transform.position + transform.right;
-            isCarryingObject = false; // Désactivez l'état de portage de l'objet
-            portableObject = null; // Réinitialisez l'objet porté
+            isCarryingObject = false; 
+            portableObject = null; 
             
         }
 
