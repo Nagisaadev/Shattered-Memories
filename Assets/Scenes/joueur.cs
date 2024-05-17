@@ -13,9 +13,12 @@ public class PlayerController : MonoBehaviour
     private GameObject portableObject = null;
     public GameObject obj;
     private bool isCarryingObject = false;
+    public GameObject player;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Récupérer le composant Rigidbody2D attaché au joueur
+        spriteRenderer = GetComponent<SpriteRenderer>();
         localScale = transform.localScale; // Sauvegarder l'échelle initiale du joueur
     }
 
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
             rb.velocity = movement;
+           
             if (moveHorizontal < 0)
             {
                 transform.localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
@@ -41,15 +45,17 @@ public class PlayerController : MonoBehaviour
             }
         }
         if (isHidden)
-        {
+        {   
             rb.velocity = new Vector2(0, 0);
+
 
         }
 
             // Si le joueur est en collision avec une cachette et appuie sur la touche "E"
             if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
         {
-            isHidden = !isHidden; // Inverser l'état de caché/non caché
+            isHidden = !isHidden;
+            spriteRenderer.enabled = !isHidden;
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
             // Ajoutez ici le code à exécuter lorsque le joueur entre/sort de la cachette
         }
