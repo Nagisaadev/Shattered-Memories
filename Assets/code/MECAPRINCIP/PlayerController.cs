@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour
         }
         Debug.Log(portableObject);
     
-        // Combinaison des fonctionnalités uniques du deuxième script
         if (isInCollisionWithCompteur == true)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
@@ -145,7 +144,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("portableObject"))
         {
             Debug.Log("Entered trigger with Portable Object");
-            isInCollisionWithPortableObject = true;
+            isInCollisionWithPortableObject = false;
             portableObject = other.gameObject;
         }
     }
