@@ -8,6 +8,7 @@ TagManager:
   - compteur
   - cachette
   - portableObject
+  - Light2D
   layers:
   - Default
   - TransparentFX

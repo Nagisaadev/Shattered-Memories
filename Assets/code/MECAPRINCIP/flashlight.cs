@@ -45,26 +45,6 @@ public class LightController : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("compteur"))
-        {
-            Debug.Log("Entered trigger with Compteur");
-            visible = true;
-
-        }
-    }
-
-
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("compteur"))
-        {
-            Debug.Log("Exited trigger with Compteur");
-            visible = false;
-
-        }
-    }
+  
 
 }
