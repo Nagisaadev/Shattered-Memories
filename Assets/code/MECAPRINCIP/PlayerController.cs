@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public bool activation = false;
     public GameObject dijoncteur;
     private Animator animator;
+    private bool uidijoncteur;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        if (!isHidden)
+        if (!isHidden || !uidijoncteur)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
             rb.velocity = movement;
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
       
 
-        if (isHidden)
+        if (isHidden || uidijoncteur)
         {
             rb.velocity = new Vector2(0, 0);
 
@@ -101,10 +102,12 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Fire1 pressed while in collision with Compteur");
                 dijoncteur.SetActive(true);
+                uidijoncteur = true;
             }
             if (Input.GetButtonDown("Cancel"))
             {
                 dijoncteur.SetActive(false);
+                uidijoncteur = false;
             }
         }
     }
