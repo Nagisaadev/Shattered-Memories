@@ -9,6 +9,7 @@ TagManager:
   - cachette
   - portableObject
   - Light2D
+  - joueur
   layers:
   - Default
   - TransparentFX
