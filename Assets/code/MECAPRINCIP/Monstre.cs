@@ -35,7 +35,20 @@ public class Monstre : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
-
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("joueur"))
+        {
+            KillPlayer();
+        }
+    }
+    void KillPlayer()
+    {
+        // Code to handle player death
+        // For example, disabling the player object
+        Destroy(player.gameObject);
+        Debug.Log("Player has been killed!");
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
