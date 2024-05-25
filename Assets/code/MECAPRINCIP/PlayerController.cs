@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public GameObject dijoncteur;
     private Animator animator;
     private bool uidijoncteur;
+
+    // Event to notify when an object is dropped
+    public static event Action<Vector2> OnObjectDropped;
 
     void Start()
     {
@@ -62,22 +66,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-      
-
         if (isHidden || uidijoncteur)
         {
             rb.velocity = new Vector2(0, 0);
-
-
         }
-
 
         if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
         {
             isHidden = !isHidden;
             spriteRenderer.enabled = !isHidden;
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
-
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -94,7 +92,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         Debug.Log(portableObject);
-    
+
         if (isInCollisionWithCompteur == true)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
@@ -146,19 +144,16 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("portableObject"))
         {
-            Debug.Log("Entered trigger with Portable Object");
+            Debug.Log("Exited trigger with Portable Object");
             isInCollisionWithPortableObject = false;
             portableObject = other.gameObject;
         }
     }
 
-        void PickUpObject(GameObject obj)
+    void PickUpObject(GameObject obj)
     {
         obj.SetActive(false);
         isCarryingObject = true;
-
-
-
     }
 
     void DropObject()
@@ -169,8 +164,8 @@ public class PlayerController : MonoBehaviour
             obj.transform.position = transform.position + transform.right;
             isCarryingObject = false;
             portableObject = null;
-
+            OnObjectDropped?.Invoke(transform.position); // Trigger the event
         }
-
     }
-}
+ }
+
