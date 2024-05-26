@@ -163,8 +163,9 @@ public class PlayerController : MonoBehaviour
             portableObject.SetActive(true);
             obj.transform.position = transform.position + transform.right;
             isCarryingObject = false;
-            portableObject = null;
+
             OnObjectDropped?.Invoke(transform.position); // Trigger the event
+            portableObject = null;
         }
     }
  }
