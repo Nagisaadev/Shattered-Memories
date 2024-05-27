@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public bool isInCollisionWithInterupteur1=false;
     public bool isInCollisionWithInterupteur2= false;
     public bool isInCollisionWithInterupteur3= false;
+    public bool isInCollisionWithCadrePetit = false;
 
     void Start()
     {
@@ -150,8 +151,11 @@ public class PlayerController : MonoBehaviour
             isInCollisionWithInterupteur3 = true;
         }
 
+        if (other.gameObject.CompareTag("cadrepetit"))
+        {
 
-
+            isInCollisionWithCadrePetit = true;
+        }
 
 
     }
@@ -191,7 +195,13 @@ public class PlayerController : MonoBehaviour
 
             isInCollisionWithInterupteur3 = false;
         }
+       
+        
+        if (other.gameObject.CompareTag("cadrepetit"))
+        {
 
+            isInCollisionWithCadrePetit =false;
+        }
     }
 
         void PickUpObject(GameObject obj)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class boutdephoto : MonoBehaviour
@@ -7,12 +8,9 @@ public class boutdephoto : MonoBehaviour
     public float amplitude = 0.3f; // Amplitude du mouvement
     public float vitesse = 1.5f; // Vitesse du mouvement
     private float positionVerticaleInitiale;
-    public bool photo1=false;
-    public bool photo2 = false;
-    public bool photo3 = false;
-    public bool colisionphoto1 = false;
-    public bool colisionphoto2 = false;
-    public bool colisionphoto3 = false;
+    public bool photo=false;
+    public bool colisionphoto = false;
+    public GameObject petitephoto;
     void Start()
     {
         positionVerticaleInitiale = transform.position.y;
@@ -28,20 +26,11 @@ public class boutdephoto : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("joueur")&&colisionphoto1==true)
+        if (other.gameObject.CompareTag("joueur"))
         {
-            photo1 = true;
-
+            photo = true;
+            petitephoto.SetActive(false);
         }
-        if (other.gameObject.CompareTag("joueur") && colisionphoto2 == true)
-        {
-            photo2 = true;
-
-        }
-        if (other.gameObject.CompareTag("joueur") && colisionphoto3 == true)
-        {
-            photo3 = true;
-
-        }
+      
     }
 }

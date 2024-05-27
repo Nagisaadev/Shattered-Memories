@@ -24,7 +24,7 @@ public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     void Start()
     {
-       cadre.SetActive(true);
+       
         
     }
     private void Awake()
@@ -56,22 +56,7 @@ public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     void Update()
     { 
-    if (!isDragging& isInCollisionWithCadre == true& boutdephoto.photo1==true)
-        {
-           mom = true;
-            grandephoto1.SetActive(false);
-            }
-        if (!isDragging & isInCollisionWithCadre == true & boutdephoto.photo2 == true)
-        {
-            girl= true;
-            grandephoto2.SetActive(false);
-        }
-        if (!isDragging & isInCollisionWithCadre == true & boutdephoto.photo3 == true)
-        {
-            boy = true;
-            grandephoto3.SetActive(false);
-        }
-
+   
     }
 
     void OnTriggerEnter2D(Collider2D other)
