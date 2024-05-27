@@ -128,6 +128,10 @@ public class PlayerController : MonoBehaviour
             isInCollisionWithPortableObject = true;
             portableObject = other.gameObject;
         }
+        if (other.CompareTag("Cuisine") || other.CompareTag("SalleAManger") || other.CompareTag("Garage"))
+        {
+            GetComponent<DetectionSalle>().salleActuelle = other.tag;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -147,6 +151,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Exited trigger with Portable Object");
             isInCollisionWithPortableObject = false;
             portableObject = other.gameObject;
+        }
+        if (other.CompareTag("Cuisine") || other.CompareTag("SalleAManger") || other.CompareTag("Garage"))
+        {
+            GetComponent<DetectionSalle>().salleActuelle = "";
         }
     }
 

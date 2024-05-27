@@ -10,6 +10,10 @@ TagManager:
   - portableObject
   - Light2D
   - joueur
+  - Obstacle
+  - Cuisine
+  - SalleAManger
+  - Garage
   layers:
   - Default
   - TransparentFX

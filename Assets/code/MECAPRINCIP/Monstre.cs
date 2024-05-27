@@ -27,6 +27,11 @@ public class Monstre : MonoBehaviour
     private List<Node> path;
     private int targetIndex;
 
+    private bool isAppeared = false;
+    public List<Transform> patrolPointsCuisine; // Liste des points de patrouille pour la cuisine
+    public List<Transform> patrolPointsSalleAManger; // Liste des points de patrouille pour la salle à manger
+    public List<Transform> patrolPointsGarage; // Liste des points de patrouille pour le garage
+
     void Start()
     {
         pathfinding = FindObjectOfType<Pathfinding>();
@@ -44,11 +49,31 @@ public class Monstre : MonoBehaviour
 
     void Update()
     {
+        // Déterminer la salle actuelle
+        string salleActuelle = DeterminerSalleActuelle();
+
+        // Assigner la patrouille en fonction de la salle actuelle
+        switch (salleActuelle)
+        {
+            case "Cuisine":
+                patrolPoints = patrolPointsCuisine;
+                break;
+            case "Salle à manger":
+                patrolPoints = patrolPointsSalleAManger;
+                break;
+            case "Garage":
+                patrolPoints = patrolPointsGarage;
+                break;
+
+        }
+
+        // Détection du joueur
         DetectPlayer();
 
+        // Logique de suivi du joueur ou de patrouille selon la situation
         if (isPlayerInRange)
         {
-            hasInvestigatedNoise = false; // Réinitialiser l'investigation du bruit si le joueur est détecté
+            hasInvestigatedNoise = false;
             path = pathfinding.FindPath(transform.position, player.position);
             Debug.Log("Player in range. Path length: " + (path != null ? path.Count.ToString() : "null"));
             FollowPath();
@@ -63,41 +88,38 @@ public class Monstre : MonoBehaviour
             if (path == null || path.Count == 0)
             {
                 isNoiseDetected = false;
-                hasInvestigatedNoise = true; // Marquer le bruit comme investigué
-                lastHeardNoisePosition = noiseLocation; // Enregistrer la position du bruit
-                noiseInvestigationStartTime = Time.time; // Enregistrer le temps de début de l'enquête sur le bruit
+                hasInvestigatedNoise = true;
+                lastHeardNoisePosition = noiseLocation;
+                noiseInvestigationStartTime = Time.time;
                 Debug.Log("No path available.");
                 return;
             }
 
             if (Vector2.Distance(transform.position, noiseLocation) < 0.1f)
             {
-                // Ne rien faire tant que le monstre est à proximité du bruit
                 return;
             }
         }
         else if (hasInvestigatedNoise)
         {
-            // Attendre près du bruit pendant un certain temps
             if (Time.time - noiseInvestigationStartTime >= noiseInvestigationTime)
             {
-                // Revenir à la patrouille normale
                 hasInvestigatedNoise = false;
                 hasHeardNoise = false;
                 path = null;
-                // Reprendre le chemin interrompu
-                if (lastHeardNoisePosition != null)
-                {
-                    path = pathfinding.FindPath(transform.position, lastHeardNoisePosition);
-                }
+                GoToClosestPatrolPoint();
             }
         }
-        
-        
         else
         {
             Patrol();
         }
+    }
+
+
+    string DeterminerSalleActuelle()
+    {
+        return GetComponent<DetectionSalle>().salleActuelle;
     }
 
     void DetectPlayer()
@@ -167,6 +189,31 @@ public class Monstre : MonoBehaviour
         }
     }
 
+    void GoToClosestPatrolPoint()
+    {
+        if (patrolPoints.Count == 0)
+        {
+            Debug.LogWarning("No patrol points assigned!");
+            return;
+        }
+
+        float closestDistance = float.MaxValue;
+        int closestIndex = 0;
+
+        for (int i = 0; i < patrolPoints.Count; i++)
+        {
+            float distance = Vector2.Distance(transform.position, patrolPoints[i].position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestIndex = i;
+            }
+        }
+
+        currentPatrolIndex = closestIndex;
+        Patrol();
+    }
+
     void OnObjectDropped(Vector2 dropLocation)
     {
         noiseLocation = dropLocation;
@@ -197,13 +244,9 @@ public class Monstre : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
+
+
 }
-
-
-
-
-
-
 
 
 
