@@ -10,11 +10,22 @@ public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     private RectTransform rectTransform;
     private Canvas canvas;
     public GameObject cadre;
-    public GameObject boutdephoto;
+    public boutdephoto boutdephoto;
+    private bool isInCollisionWithCadre;
+    public GameObject grandephoto1;
+    public GameObject grandephoto2;
+    public GameObject grandephoto3;
+
+    private bool mom = false;
+    private bool boy = false;
+    private bool girl = false;
+
+
+
     void Start()
     {
-       cadre.SetActive(false);
-
+       cadre.SetActive(true);
+        
     }
     private void Awake()
     {
@@ -45,11 +56,39 @@ public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
 
     void Update()
     { 
-    
-    
-    
-    
+    if (!isDragging& isInCollisionWithCadre == true& boutdephoto.photo1==true)
+        {
+           mom = true;
+            grandephoto1.SetActive(false);
+            }
+        if (!isDragging & isInCollisionWithCadre == true & boutdephoto.photo2 == true)
+        {
+            girl= true;
+            grandephoto2.SetActive(false);
+        }
+        if (!isDragging & isInCollisionWithCadre == true & boutdephoto.photo3 == true)
+        {
+            boy = true;
+            grandephoto3.SetActive(false);
+        }
+
     }
 
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("cadre"))
+        {
+            
+            isInCollisionWithCadre = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("cadre"))
+        {
+           
+            isInCollisionWithCadre = false;
+        }
+        
+    }
 }

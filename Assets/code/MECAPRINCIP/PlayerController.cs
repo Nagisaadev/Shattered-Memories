@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public GameObject dijoncteur;
     private Animator animator;
     private bool uidijoncteur;
+    public bool peutpasbouger = false;
+    public bool isInCollisionWithInterupteur1=false;
+    public bool isInCollisionWithInterupteur2= false;
+    public bool isInCollisionWithInterupteur3= false;
 
     void Start()
     {
@@ -37,7 +41,7 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        if (!isHidden || !uidijoncteur)
+        if (!isHidden || !uidijoncteur ||!peutpasbouger)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
             rb.velocity = movement;
@@ -64,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
       
 
-        if (isHidden || uidijoncteur)
+        if (isHidden || uidijoncteur || peutpasbouger)
         {
             rb.velocity = new Vector2(0, 0);
 
@@ -130,6 +134,26 @@ public class PlayerController : MonoBehaviour
             isInCollisionWithPortableObject = true;
             portableObject = other.gameObject;
         }
+
+        if (other.gameObject.CompareTag("interupteur1"))
+        {
+            isInCollisionWithInterupteur1 = true;
+
+        }
+        if (other.gameObject.CompareTag("interupteur2"))
+        {
+            isInCollisionWithInterupteur2 = true;
+        }
+        if (other.gameObject.CompareTag("interupteur3"))
+        {
+
+            isInCollisionWithInterupteur3 = true;
+        }
+
+
+
+
+
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -150,6 +174,24 @@ public class PlayerController : MonoBehaviour
             isInCollisionWithPortableObject = false;
             portableObject = other.gameObject;
         }
+
+
+
+        if (other.gameObject.CompareTag("interupteur1"))
+        {
+            isInCollisionWithInterupteur1 = false;
+
+        }
+        if (other.gameObject.CompareTag("interupteur2"))
+        {
+            isInCollisionWithInterupteur2 = false;
+        }
+        if (other.gameObject.CompareTag("interupteur3"))
+        {
+
+            isInCollisionWithInterupteur3 = false;
+        }
+
     }
 
         void PickUpObject(GameObject obj)

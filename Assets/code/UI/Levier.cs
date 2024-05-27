@@ -8,9 +8,20 @@ public class Levier : MonoBehaviour
     public Slider[] sliders; // Tableau pour stocker les sliders
     private int[] correctOrder = { 0, 1, 2 }; // L'ordre correct d'interaction
     private List<int> userInput = new List<int>(); // Liste pour stocker l'ordre des interactions de l'utilisateur
-
+    public PlayerController playerController;
+    public GameObject fond;
+    public GameObject[] slidersobj;
     void Start()
     {
+        fond.SetActive(false);
+        slidersobj[0].SetActive(false);
+        slidersobj[1].SetActive(false);
+        slidersobj[2].SetActive(false);
+
+
+
+
+
         // Assigner des méthodes d'écoute aux sliders
         for (int i = 0; i < sliders.Length; i++)
         {
@@ -67,5 +78,70 @@ public class Levier : MonoBehaviour
         {
             slider.value = 0;
         }
+    }
+
+
+
+
+    void Update()
+    {
+       
+
+        if (playerController.isInCollisionWithInterupteur1 == true)
+        {
+            
+            if (Input.GetButtonDown("Fire1"))
+            {
+
+                slidersobj[0].SetActive(true);
+                fond.SetActive(true);
+                playerController.peutpasbouger = true;
+            }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                slidersobj[0].SetActive(false);
+                fond.SetActive(false);
+                playerController.peutpasbouger = false;
+            }
+        }
+
+        if (playerController.isInCollisionWithInterupteur2 == true)
+        {
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+
+                slidersobj[1].SetActive(true);
+                fond.SetActive(true);
+                playerController.peutpasbouger = true;
+            }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                slidersobj[1].SetActive(false);
+                fond.SetActive(false);
+                playerController.peutpasbouger = false;
+            }
+        }
+
+
+        if (playerController.isInCollisionWithInterupteur3 == true)
+        {
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+
+                slidersobj[2].SetActive(true);
+                fond.SetActive(true);
+                playerController.peutpasbouger = true;
+            }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                slidersobj[2].SetActive(false);
+                fond.SetActive(false);
+                playerController.peutpasbouger = false;
+            }
+        }
+
+
     }
 }

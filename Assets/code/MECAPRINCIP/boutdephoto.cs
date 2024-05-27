@@ -7,12 +7,12 @@ public class boutdephoto : MonoBehaviour
     public float amplitude = 0.3f; // Amplitude du mouvement
     public float vitesse = 1.5f; // Vitesse du mouvement
     private float positionVerticaleInitiale;
-    private bool photo1=false;
-    private bool photo2 = false;
-    private bool photo3 = false;
-    private bool colisionphoto1 = false;
-    private bool colisionphoto2 = false;
-    private bool colisionphoto3 = false;
+    public bool photo1=false;
+    public bool photo2 = false;
+    public bool photo3 = false;
+    public bool colisionphoto1 = false;
+    public bool colisionphoto2 = false;
+    public bool colisionphoto3 = false;
     void Start()
     {
         positionVerticaleInitiale = transform.position.y;

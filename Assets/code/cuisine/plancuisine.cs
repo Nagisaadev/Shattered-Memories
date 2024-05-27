@@ -5,7 +5,7 @@ using UnityEngine;
 public class plancuisine : MonoBehaviour
 {
     public GameObject plan;
-    public GameObject player;
+    public PlayerController playerController;
     private bool colision=false;
     void Start()
     {
@@ -15,15 +15,21 @@ public class plancuisine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")&& colision == true)
+        
+        if (colision == true)
         {
-            plan.SetActive(true);
-        }
-        if (colision == false)
-        {
-            plan.SetActive(false);
-        }
+            if (Input.GetButtonDown("Fire1"))
+            {
 
+                plan.SetActive(true);
+                playerController.peutpasbouger = true;
+            }
+            if (Input.GetButtonDown("Cancel"))
+            {
+                plan.SetActive(false);
+                playerController.peutpasbouger = false;
+            }
+        }
     }
 
 
