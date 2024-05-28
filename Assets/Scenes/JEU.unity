@@ -2766,10 +2766,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.00050327124
+    y: 0.0033557047
+    width: 0.99849015
+    height: 0.9932886
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -3332,8 +3332,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.77145, y: 1.4585564, z: 0}
-    m_Extent: {x: 6.0949497, y: 3.9467566, z: 0}
+    m_Center: {x: 4.7749395, y: 1.4570565, z: 0}
+    m_Extent: {x: 6.089775, y: 3.9482565, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5043,8 +5043,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.9168777, y: 0.34427285, z: 0}
-    m_Extent: {x: 6.5411777, y: 5.3300905, z: 0}
+    m_Center: {x: 4.9218626, y: 0.34398174, z: 0}
+    m_Extent: {x: 6.536193, y: 5.330382, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5865,8 +5865,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.9483624, y: -1.909559, z: 0}
-    m_Extent: {x: 6.378813, y: 3.076259, z: 0}
+    m_Center: {x: 4.9514246, y: -1.9171703, z: 0}
+    m_Extent: {x: 6.381875, y: 3.0758297, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8058,6 +8058,7 @@ GameObject:
   - component: {fileID: 1442323839}
   - component: {fileID: 1442323834}
   - component: {fileID: 1442323840}
+  - component: {fileID: 1442323841}
   m_Layer: 0
   m_Name: Monstre
   m_TagString: Untagged
@@ -8183,7 +8184,7 @@ Transform:
   m_GameObject: {fileID: 1442323833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.16, y: -7.88, z: 0}
+  m_LocalPosition: {x: -32.67, y: -7.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8237,6 +8238,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   salleActuelle: 
+--- !u!114 &1442323841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442323833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f57901f48dddb54d95c28695e3113fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seeker: {fileID: 1309651593}
+  target: {fileID: 1848340643}
 --- !u!1 &1448908256
 GameObject:
   m_ObjectHideFlags: 0
@@ -8906,7 +8921,7 @@ Transform:
   m_GameObject: {fileID: 1593634470}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22.95, y: -9.654338, z: 0.89953357}
+  m_LocalPosition: {x: -22.95, y: 5.83, z: 0.89953357}
   m_LocalScale: {x: 1, y: 3.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8924,14 +8939,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c70949e01d4d91428f8ca2d05ee59dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 0
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 8
   gridWorldSize: {x: 100, y: 50}
   nodeRadius: 1
-  walkableRegions: []
-  obstacleProximityPenalty: 10
 --- !u!1 &1600334085
 GameObject:
   m_ObjectHideFlags: 0
@@ -10872,7 +10884,7 @@ GameObject:
   - component: {fileID: 1870266295}
   m_Layer: 0
   m_Name: SalleDetector
-  m_TagString: Untagged
+  m_TagString: Cuisine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
