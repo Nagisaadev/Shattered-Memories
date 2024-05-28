@@ -225,25 +225,17 @@ public class Monstre : MonoBehaviour
         Patrol();
     }
 
-    void OnObjectDropped(Vector2 dropLocation)
-    {
-        noiseLocation = dropLocation;
-        isNoiseDetected = true;
-        hasInvestigatedNoise = false; // Réinitialiser l'investigation du bruit
-        noiseTimer = 0f; // Réinitialiser le timer du bruit
-        targetIndex = 0; // Réinitialiser l'index de chemin lorsque qu'un nouveau bruit est détecté
-        path = null; // Réinitialiser le chemin lorsque qu'un nouveau bruit est détecté
+void OnObjectDropped(Vector2 dropLocation)
+{
+    noiseLocation = dropLocation;
+    isNoiseDetected = true;
+    hasInvestigatedNoise = false; // Réinitialiser l'investigation du bruit
+    noiseTimer = 0f; // Réinitialiser le timer du bruit
+    targetIndex = 0; // Réinitialiser l'index de chemin lorsque qu'un nouveau bruit est détecté
+    path = null; // Réinitialiser le chemin lorsque qu'un nouveau bruit est détecté
 
-        // Téléporter le monstre à la porte de la salle du joueur
-        TeleportToPlayerRoom();
 
-        // Redémarrer le délai d'apparition du monstre
-        if (apparitionCoroutine != null)
-        {
-            StopCoroutine(apparitionCoroutine);
-        }
-        apparitionCoroutine = StartCoroutine(ApparitionCoroutine());
-    }
+}
 
 
     void OnCollisionEnter2D(Collision2D collision)
