@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class cadrephoto : MonoBehaviour
 {
     public PlayerController playerController;
-    public GameObject fond;
+    public Image fond;
     public GameObject grandephoto1;
     public GameObject grandephoto2;
     public GameObject grandephoto3;
@@ -15,7 +15,7 @@ public class cadrephoto : MonoBehaviour
     
     void Start()
     {
-        fond.SetActive(false);
+        fond.enabled = false;
         grandephoto1.SetActive(false);
         grandephoto2.SetActive(false);
         grandephoto3.SetActive(false);
@@ -29,7 +29,7 @@ public class cadrephoto : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
-                fond.SetActive(true);
+                fond.enabled = true; 
                 playerController.peutpasbouger = true;
 
                 if(boutdephoto1.photo==true)
@@ -47,7 +47,7 @@ public class cadrephoto : MonoBehaviour
             }
             if (Input.GetButtonDown("Cancel"))
             {
-                fond.SetActive(false);
+                fond.enabled = false;
                 playerController.peutpasbouger = false;
                 grandephoto1.SetActive(false);
                 grandephoto2.SetActive(false);

@@ -9,6 +9,7 @@ public class Teleportation : MonoBehaviour
     public PlayerController playerController;
     private bool isInCollisionWithPoinA;
     private bool isInCollisionWithPoinB;
+    public bool peutTP=true;
     
     void Start()
     {
@@ -19,7 +20,7 @@ public class Teleportation : MonoBehaviour
     void Update()
     {
 
-        if (isInCollisionWithPoinA == true)
+        if (isInCollisionWithPoinA == true& peutTP)
         {
            
             if (Input.GetButtonDown("Fire1"))

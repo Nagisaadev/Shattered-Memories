@@ -6,19 +6,15 @@ using UnityEngine.EventSystems;
 
 public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    private bool isDragging = false;
+    public bool isDragging = false;
     private RectTransform rectTransform;
     private Canvas canvas;
-    public GameObject cadre;
-    public boutdephoto boutdephoto;
-    private bool isInCollisionWithCadre;
-    public GameObject grandephoto1;
-    public GameObject grandephoto2;
-    public GameObject grandephoto3;
 
-    private bool mom = false;
-    private bool boy = false;
-    private bool girl = false;
+    
+    public bool isInCollisionWithCadre;
+    
+
+   
 
 
 
@@ -51,19 +47,20 @@ public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, eventData.position, eventData.pressEventCamera, out localPoint);
             rectTransform.anchoredPosition = localPoint;
         }
+
     }
 
 
     void Update()
-    { 
-   
+    {
+      
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("cadre"))
         {
-            
+            Debug.LogWarning("ça touche");
             isInCollisionWithCadre = true;
         }
     }
@@ -71,7 +68,7 @@ public class photos : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDr
     {
         if (other.gameObject.CompareTag("cadre"))
         {
-           
+            Debug.LogWarning("ça touche PLUS");
             isInCollisionWithCadre = false;
         }
         

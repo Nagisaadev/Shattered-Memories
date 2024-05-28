@@ -11,6 +11,7 @@ public class Levier : MonoBehaviour
     public PlayerController playerController;
     public GameObject fond;
     public GameObject[] slidersobj;
+    public Teleportation teleportation;
     void Start()
     {
         fond.SetActive(false);
@@ -55,6 +56,7 @@ public class Levier : MonoBehaviour
                 if (isCorrect)
                 {
                     Debug.Log("L'objet est ouvert !");
+                    teleportation.peutTP = true;
                 }
                 else
                 {
