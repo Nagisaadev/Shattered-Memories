@@ -15,6 +15,9 @@ TagManager:
   - interupteur2
   - interupteur3
   - cadrepetit
+  - Cuisine
+  - SalleAManger
+  - Garage
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,10 +21,15 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private bool uidijoncteur;
     public bool peutpasbouger = false;
-    public bool isInCollisionWithInterupteur1=false;
-    public bool isInCollisionWithInterupteur2= false;
-    public bool isInCollisionWithInterupteur3= false;
+    public bool isInCollisionWithInterupteur1 = false;
+    public bool isInCollisionWithInterupteur2 = false;
+    public bool isInCollisionWithInterupteur3 = false;
     public bool isInCollisionWithCadrePetit = false;
+    public string currentRoom;
+
+    // Event to notify when an object is dropped
+    public static event Action<Vector2> OnObjectDropped;
+
 
     void Start()
     {
@@ -35,6 +41,7 @@ public class PlayerController : MonoBehaviour
         dijoncteur.SetActive(false);
     }
 
+
     void Update()
     {
         Debug.Log("L'objet est il porté : " + isCarryingObject);
@@ -42,7 +49,7 @@ public class PlayerController : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        if (!isHidden || !uidijoncteur ||!peutpasbouger)
+        if (!isHidden || !uidijoncteur || !peutpasbouger)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
             rb.velocity = movement;
@@ -67,22 +74,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-      
-
         if (isHidden || uidijoncteur || peutpasbouger)
         {
             rb.velocity = new Vector2(0, 0);
-
-
         }
-
 
         if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
         {
             isHidden = !isHidden;
             spriteRenderer.enabled = !isHidden;
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
-
         }
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -99,8 +100,8 @@ public class PlayerController : MonoBehaviour
             }
         }
         Debug.Log(portableObject);
-    
-        if (isInCollisionWithCompteur == true)
+
+        if (isInCollisionWithCompteur)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
             if (Input.GetButtonDown("Fire1"))
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -139,7 +141,6 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("interupteur1"))
         {
             isInCollisionWithInterupteur1 = true;
-
         }
         if (other.gameObject.CompareTag("interupteur2"))
         {
@@ -147,18 +148,15 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("interupteur3"))
         {
-
             isInCollisionWithInterupteur3 = true;
         }
 
         if (other.gameObject.CompareTag("cadrepetit"))
         {
-
             isInCollisionWithCadrePetit = true;
         }
-
-
     }
+
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -174,17 +172,14 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("portableObject"))
         {
-            Debug.Log("Entered trigger with Portable Object");
+            Debug.Log("Exited trigger with Portable Object");
             isInCollisionWithPortableObject = false;
-            portableObject = other.gameObject;
+            portableObject = null;
         }
-
-
 
         if (other.gameObject.CompareTag("interupteur1"))
         {
             isInCollisionWithInterupteur1 = false;
-
         }
         if (other.gameObject.CompareTag("interupteur2"))
         {
@@ -192,25 +187,20 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("interupteur3"))
         {
-
             isInCollisionWithInterupteur3 = false;
         }
-       
-        
+
         if (other.gameObject.CompareTag("cadrepetit"))
         {
-
-            isInCollisionWithCadrePetit =false;
+            isInCollisionWithCadrePetit = false;
         }
     }
 
-        void PickUpObject(GameObject obj)
+
+    void PickUpObject(GameObject obj)
     {
         obj.SetActive(false);
         isCarryingObject = true;
-
-
-
     }
 
     void DropObject()
@@ -220,9 +210,9 @@ public class PlayerController : MonoBehaviour
             portableObject.SetActive(true);
             obj.transform.position = transform.position + transform.right;
             isCarryingObject = false;
+
+            OnObjectDropped?.Invoke(transform.position); // Trigger the event
             portableObject = null;
-
         }
-
     }
 }

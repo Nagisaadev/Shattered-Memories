@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
@@ -20,13 +19,13 @@ public class Pathfinding : MonoBehaviour
         List<Node> openSet = new List<Node>();
         HashSet<Node> closedSet = new HashSet<Node>();
         openSet.Add(startNode);
-        [21:29]
-while (openSet.Count > 0)
+        while (openSet.Count > 0)
         {
             Node currentNode = openSet[0];
             for (int i = 1; i < openSet.Count; i++)
             {
-                if (openSet[i].fCost < currentNode.fCost(openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost))
+                if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost))
+
                 {
                     currentNode = openSet[i];
                 }
@@ -42,7 +41,8 @@ while (openSet.Count > 0)
 
             foreach (Node neighbour in grid.GetNeighbours(currentNode))
             {
-                if (!neighbour.walkable  closedSet.Contains(neighbour))
+                if (!neighbour.walkable) closedSet.Contains(neighbour);
+                
                 {
                     continue;
                 }
@@ -64,7 +64,6 @@ while (openSet.Count > 0)
 
         return null;
     }
-    [21:29]
     List<Node> RetracePath(Node startNode, Node endNode)
     {
         List<Node> path = new List<Node>();
