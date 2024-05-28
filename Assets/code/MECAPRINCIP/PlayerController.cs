@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public GameObject dijoncteur;
     private Animator animator;
     private bool uidijoncteur;
+    public string currentRoom;
 
     // Event to notify when an object is dropped
     public static event Action<Vector2> OnObjectDropped;

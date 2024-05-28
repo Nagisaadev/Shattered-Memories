@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Monstre : MonoBehaviour
@@ -22,7 +23,6 @@ public class Monstre : MonoBehaviour
     private bool hasHeardNoise = false; // Indique si le monstre a entendu un bruit
     private Vector2 lastHeardNoisePosition; // Position du dernier bruit entendu
 
-
     private Pathfinding pathfinding;
     private List<Node> path;
     private int targetIndex;
@@ -32,9 +32,22 @@ public class Monstre : MonoBehaviour
     public List<Transform> patrolPointsSalleAManger; // Liste des points de patrouille pour la salle à manger
     public List<Transform> patrolPointsGarage; // Liste des points de patrouille pour le garage
 
+    // Positions des portes
+    public Vector2 porteCuisine; // Définir dans l'inspecteur de Unity
+    public Vector2 porteSalleAManger; // Définir dans l'inspecteur de Unity
+    public Vector2 porteGarage; // Définir dans l'inspecteur de Unity
+
+    private Coroutine apparitionCoroutine;
+
     void Start()
     {
         pathfinding = FindObjectOfType<Pathfinding>();
+        apparitionCoroutine = StartCoroutine(ApparitionCoroutine());
+        player = GameObject.FindGameObjectWithTag("joueur").transform;
+        if (player == null)
+        {
+            Debug.LogError("Aucun joueur trouvé !");
+        }
     }
 
     void OnEnable()
@@ -64,7 +77,6 @@ public class Monstre : MonoBehaviour
             case "Garage":
                 patrolPoints = patrolPointsGarage;
                 break;
-
         }
 
         // Détection du joueur
@@ -115,7 +127,6 @@ public class Monstre : MonoBehaviour
             Patrol();
         }
     }
-
 
     string DeterminerSalleActuelle()
     {
@@ -222,7 +233,18 @@ public class Monstre : MonoBehaviour
         noiseTimer = 0f; // Réinitialiser le timer du bruit
         targetIndex = 0; // Réinitialiser l'index de chemin lorsque qu'un nouveau bruit est détecté
         path = null; // Réinitialiser le chemin lorsque qu'un nouveau bruit est détecté
+
+        // Téléporter le monstre à la porte de la salle du joueur
+        TeleportToPlayerRoom();
+
+        // Redémarrer le délai d'apparition du monstre
+        if (apparitionCoroutine != null)
+        {
+            StopCoroutine(apparitionCoroutine);
+        }
+        apparitionCoroutine = StartCoroutine(ApparitionCoroutine());
     }
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -245,8 +267,55 @@ public class Monstre : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
+    IEnumerator ApparitionCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(15f); // Attendre 15 secondes
 
+            // Téléporter le monstre à la porte de la salle du joueur
+            TeleportToPlayerRoom();
+        }
+    }
+
+    void TeleportToPlayerRoom()
+    {
+        // Obtenir la salle actuelle du joueur
+        string salleActuelle = player.GetComponent<DetectionSalle>().salleActuelle;
+
+        // Déterminer la position de la porte de la salle actuelle du joueur
+        Vector2 targetPosition = Vector2.zero;
+
+        switch (salleActuelle)
+        {
+            case "Cuisine":
+                targetPosition = porteCuisine;
+                break;
+            case "Salle à manger":
+                targetPosition = porteSalleAManger;
+                break;
+            case "Garage":
+                targetPosition = porteGarage;
+                break;
+            default:
+                Debug.LogWarning("Salle actuelle non reconnue: " + salleActuelle);
+                break;
+        }
+
+        // Téléporter le monstre à la porte de la salle où se trouve le joueur
+        transform.position = targetPosition;
+        Debug.Log("Le monstre est apparu à la porte de la salle: " + salleActuelle + " à la position: " + targetPosition);
+    }
 }
+
+
+
+
+
+
+
+
+
 
 
 
