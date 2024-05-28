@@ -225,18 +225,32 @@ public class Monstre : MonoBehaviour
         Patrol();
     }
 
-void OnObjectDropped(Vector2 dropLocation)
-{
-    noiseLocation = dropLocation;
-    isNoiseDetected = true;
-    hasInvestigatedNoise = false; // Réinitialiser l'investigation du bruit
-    noiseTimer = 0f; // Réinitialiser le timer du bruit
-    targetIndex = 0; // Réinitialiser l'index de chemin lorsque qu'un nouveau bruit est détecté
-    path = null; // Réinitialiser le chemin lorsque qu'un nouveau bruit est détecté
+    void OnObjectDropped(Vector2 dropLocation)
+    {
+        string salleMonstre = DeterminerSalleMonstre();
+        string salleJoueur = player.GetComponent<DetectionSalle>().salleActuelle;
+
+        if (salleMonstre == salleJoueur)
+        {
+            noiseLocation = dropLocation;
+            isNoiseDetected = true;
+            hasInvestigatedNoise = false; // Réinitialiser l'investigation du bruit
+            noiseTimer = 0f; // Réinitialiser le timer du bruit
+            targetIndex = 0; // Réinitialiser l'index de chemin lorsque qu'un nouveau bruit est détecté
+            path = null;// Réinitialiser le chemin lorsque qu'un nouveau bruit est détecté
+         }
+
+        else
+        {
+            Debug.Log("Monstre n'entend pas le bruit car il est dans une autre pièce.");
+        }
+    }
 
 
-}
-
+    string DeterminerSalleMonstre()
+    {
+        return GetComponent<DetectionSalle>().salleActuelle;
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
