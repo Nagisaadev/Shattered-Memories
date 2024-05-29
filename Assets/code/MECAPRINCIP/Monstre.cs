@@ -9,12 +9,19 @@ public class Monstre : MonoBehaviour
     public float detectionRange = 5f;
     public List<Transform> patrolPoints;
     private int currentPatrolIndex = 0;
-    private float noiseTimer = 0f;
+
     private bool isPlayerDetected = false;
     private bool isPlayerInRange = false;
     private Vector2 noiseLocation;
     private bool isNoiseDetected = false;
     private bool hasInvestigatedNoise = false;
+    private float noiseDetectionTime = 5f;
+    private float noiseTimer = 0f;
+    private float noiseInvestigationStartTime;
+    private float noiseInvestigationTime = 5f;
+    private float noiseInvestigationTimer = 0f;
+    private bool hasHeardNoise = false;
+    private Vector2 lastHeardNoisePosition;
 
     private Pathfinding pathfinding;
     private List<Node> path;
@@ -35,7 +42,6 @@ public class Monstre : MonoBehaviour
 
     public List<Transform> patrolPointsSalon; // Liste des points de patrouille pour le salon
     private bool hasAppearedInSalon = false;
-    private bool isInvestigatingNoise = false;
 
     private Coroutine noiseInvestigationCoroutine;
 
@@ -52,12 +58,12 @@ public class Monstre : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerController.OnNoiseMade += OnNoiseMade;
+        PlayerController.OnObjectDropped += OnObjectDropped;
     }
 
     void OnDisable()
     {
-        PlayerController.OnNoiseMade -= OnNoiseMade;
+        PlayerController.OnObjectDropped -= OnObjectDropped;
     }
 
     void Update()
@@ -97,17 +103,16 @@ public class Monstre : MonoBehaviour
                 Debug.LogWarning("Player detected, but no valid path found!");
             }
         }
-        if (isInvestigatingNoise)
+        else if (isNoiseDetected && !hasInvestigatedNoise)
         {
-            if (path == null || path.Count == 0)
+            if (noiseInvestigationCoroutine == null)
             {
-                path = pathfinding.FindPath(transform.position, noiseLocation);
-                targetIndex = 0;
+                noiseInvestigationCoroutine = StartCoroutine(InvestigateNoise());
             }
-            else
-            {
-                FollowPath();
-            }
+        }
+        else if (hasInvestigatedNoise)
+        {
+            // Traiter l'investigation du bruit
         }
         else
         {
@@ -115,36 +120,9 @@ public class Monstre : MonoBehaviour
         }
     }
 
-    void OnNoiseMade(Vector2 noisePosition)
+    string DeterminerSalleActuelle()
     {
-        string salleMonstre = DeterminerSalleMonstre();
-        string salleJoueur = player.GetComponent<DetectionSalle>().salleActuelle;
-
-        if (salleMonstre == salleJoueur)
-        {
-            // Arrêtez la coroutine d'investigation du bruit si elle est déjà en cours
-            if (noiseInvestigationCoroutine != null)
-            {
-                StopCoroutine(noiseInvestigationCoroutine);
-            }
-
-            noiseLocation = noisePosition;
-            isNoiseDetected = true;
-            hasInvestigatedNoise = false;
-            isInvestigatingNoise = true; // Le monstre enquête sur le bruit
-            targetIndex = 0;
-            path = null;
-
-            // Commencez à suivre le bruit
-            StartCoroutine(FollowNoise());
-
-            // Indiquez au monstre d'entendre le bruit
-            HearNoise(noisePosition);
-        }
-        else
-        {
-            Debug.Log("Monstre n'entend pas le bruit car il est dans une autre pièce.");
-        }
+        return GetComponent<DetectionSalle>().salleActuelle;
     }
 
     void DetectPlayer()
@@ -164,18 +142,23 @@ public class Monstre : MonoBehaviour
 
     void FollowPath()
     {
-        if (path == null || path.Count == 0) return;
-
-        Node targetNode = path[targetIndex];
-        Vector2 targetPosition = targetNode.worldPosition;
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+        if (isPlayerDetected)
         {
-            targetIndex++;
-            if (targetIndex >= path.Count)
+            Vector3 playerPosition = player.position;
+            transform.position = Vector2.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
+        }
+        else // Sinon, suivre le chemin normalement
+        {
+            if (targetIndex < path.Count)
             {
-                isInvestigatingNoise = false; // Arrêter d'enquêter lorsque le monstre atteint la position du bruit
+                Node targetNode = path[targetIndex];
+                Vector2 targetPosition = targetNode.worldPosition;
+                transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+                if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+                {
+                    targetIndex++;
+                }
             }
         }
     }
@@ -198,59 +181,103 @@ public class Monstre : MonoBehaviour
         }
     }
 
-    void HearNoise(Vector2 noisePosition)
+    void GoToClosestPatrolPoint()
     {
-        // Move towards the noise position
-        path = pathfinding.FindPath(transform.position, noisePosition);
-        hasInvestigatedNoise = true;
-        targetIndex = 0;
+        if (patrolPoints.Count == 0)
+        {
+            Debug.LogWarning("No patrol points assigned!");
+            return;
+        }
+
+        float closestDistance = float.MaxValue;
+        int closestIndex = 0;
+
+        for (int i = 0; i < patrolPoints.Count; i++)
+        {
+            float distance = Vector2.Distance(transform.position, patrolPoints[i].position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestIndex = i;
+            }
+        }
+
+        currentPatrolIndex = closestIndex;
+        Patrol();
     }
 
-    string DeterminerSalleActuelle()
+    void OnObjectDropped(Vector2 dropLocation)
     {
-        var detectionSalle = GetComponent<DetectionSalle>();
-        if (detectionSalle == null)
+        string salleMonstre = DeterminerSalleMonstre();
+        string salleJoueur = player.GetComponent<DetectionSalle>().salleActuelle;
+
+        if (salleMonstre == salleJoueur)
         {
-            Debug.LogError("No DetectionSalle component found!");
-            return string.Empty;
+            noiseLocation = dropLocation;
+            isNoiseDetected = true;
+            hasInvestigatedNoise = false;
+            noiseTimer = 0f;
+            targetIndex = 0;
+            path = null;
+
+            // Logique pour le bruit spécifique du Buste
+            HandleNoise(dropLocation);
         }
-        return detectionSalle.salleActuelle;
+        else
+        {
+            Debug.Log("Monstre n'entend pas le bruit car il est dans une autre pièce.");
+        }
+    }
+
+    void HandleNoise(Vector2 noisePosition)
+    {
+        // Supposons que le bruit du Buste a été créé
+        Debug.Log("Noise detected at: " + noisePosition);
+        isNoiseDetected = true;
+        noiseLocation = noisePosition;
+        hasInvestigatedNoise = false;
+        noiseInvestigationStartTime = Time.time;
+        lastHeardNoisePosition = noisePosition;
+    }
+
+    IEnumerator InvestigateNoise()
+    {
+        if (isNoiseDetected)
+        {
+            path = pathfinding.FindPath(transform.position, noiseLocation);
+            if (path != null && path.Count > 0)
+            {
+                while (targetIndex < path.Count)
+                {
+                    Node targetNode = path[targetIndex];
+                    Vector2 targetPosition = targetNode.worldPosition;
+                    transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+                    if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+                    {
+                        targetIndex++;
+                    }
+                    yield return null;
+                }
+
+                Debug.Log("Monster reached the noise location. Waiting for 5 seconds.");
+                yield return new WaitForSeconds(5f);
+            }
+            else
+            {
+                Debug.LogWarning("Noise detected, but no valid path found!");
+            }
+
+            isNoiseDetected = false;
+            hasInvestigatedNoise = true;
+            noiseInvestigationCoroutine = null;
+            Debug.Log("Monster finished investigating the noise. Resuming patrol.");
+        }
     }
 
     string DeterminerSalleMonstre()
     {
-        var detectionSalle = GetComponent<DetectionSalle>();
-        if (detectionSalle == null)
-        {
-            Debug.LogError("No DetectionSalle component found!");
-            return string.Empty;
-        }
-        return detectionSalle.salleActuelle;
-    }
-
-    IEnumerator FollowNoise()
-    {
-        // Trouver un chemin vers la position du bruit
-        path = pathfinding.FindPath(transform.position, noiseLocation);
-
-        // Attendre une petite période de temps pour donner une chance au monstre de se déplacer vers la position du bruit
-        yield return new WaitForSeconds(0.5f);
-
-        // Suivre le chemin vers la position du bruit
-        while (targetIndex < path.Count)
-        {
-            Node targetNode = path[targetIndex];
-            Vector2 targetPosition = targetNode.worldPosition;
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-            if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
-            {
-                targetIndex++;
-            }
-            yield return null;
-        }
-
-        // Arrêter d'enquêter lorsque le monstre atteint la position du bruit
-        isInvestigatingNoise = false;
+        return GetComponent<DetectionSalle>().salleActuelle;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -285,6 +312,7 @@ public class Monstre : MonoBehaviour
             }
         }
     }
+
     void TeleportToPlayerRoom()
     {
         if (player == null)
@@ -342,7 +370,6 @@ public class Monstre : MonoBehaviour
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
     }
 }
-
 
 
 
