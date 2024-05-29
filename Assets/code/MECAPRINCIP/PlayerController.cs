@@ -94,14 +94,18 @@ public class PlayerController : MonoBehaviour
         {
             if (isCarryingObject)
             {
-                DropObject();
+                Debug.Log("F key pressed to drop the Portable Object");
+                DropObject(); // Passer portableObject à la fonction DropObject
             }
-            else if (isInCollisionWithPortableObject && portableObject != null)
+
+        
+        else if (isInCollisionWithPortableObject && portableObject != null)
             {
                 Debug.Log("F key pressed while in collision with Portable Object");
                 PickUpObject(portableObject);
             }
-        }
+        
+    }
         Debug.Log(portableObject);
 
         if (isInCollisionWithCompteur == true)
@@ -136,11 +140,11 @@ public class PlayerController : MonoBehaviour
         }
         if (other.gameObject.CompareTag("portableObject"))
         {
-            Debug.Log("Entered trigger with Portable Object");
+            Debug.Log("Entered trigger with Portable Object: " + other.gameObject.name);
             isInCollisionWithPortableObject = true;
             portableObject = other.gameObject;
         }
-
+    
         if (other.gameObject.CompareTag("interupteur1"))
         {
             isInCollisionWithInterupteur1 = true;
@@ -244,22 +248,28 @@ public class PlayerController : MonoBehaviour
 
     void PickUpObject(GameObject obj)
     {
-        obj.SetActive(false); // Désactiver l'objet ramassé
+        portableObject.SetActive(false);
+        
         isCarryingObject = true;
     }
-
 
     void DropObject()
     {
         if (portableObject != null)
         {
-            portableObject.SetActive(true); // Activer l'objet lâché
-            portableObject.transform.position = transform.position + transform.right;
+            portableObject.SetActive(true); // Réactiver l'objet
+            portableObject.transform.position = transform.position + transform.right; // Repositionner l'objet près du joueur
             isCarryingObject = false;
 
-            OnObjectDropped?.Invoke(transform.position);
+            OnObjectDropped?.Invoke(portableObject.transform.position); // Déclencher l'événement
             portableObject = null;
         }
+        else
+        {
+            Debug.LogWarning("Trying to drop a null object!");
+        }
     }
+
+
 
 }
