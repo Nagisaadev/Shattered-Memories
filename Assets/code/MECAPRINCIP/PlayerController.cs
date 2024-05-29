@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
     // Event to notify when an object is dropped
     public static event Action<Vector2> OnObjectDropped;
-
+    
 
     void Start()
     {
@@ -90,12 +90,10 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.enabled = !isHidden;
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
         }
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (isCarryingObject)
             {
-                Debug.Log("F key pressed to drop the Portable Object");
                 DropObject();
             }
             else if (isInCollisionWithPortableObject && portableObject != null)
@@ -106,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
         Debug.Log(portableObject);
 
-        if (isInCollisionWithCompteur)
+        if (isInCollisionWithCompteur == true)
         {
             Debug.Log(Input.GetButtonDown("Fire1"));
             if (Input.GetButtonDown("Fire1"))
@@ -246,20 +244,22 @@ public class PlayerController : MonoBehaviour
 
     void PickUpObject(GameObject obj)
     {
-        obj.SetActive(false);
+        obj.SetActive(false); // Désactiver l'objet ramassé
         isCarryingObject = true;
     }
+
 
     void DropObject()
     {
         if (portableObject != null)
         {
-            portableObject.SetActive(true);
-            obj.transform.position = transform.position + transform.right;
+            portableObject.SetActive(true); // Activer l'objet lâché
+            portableObject.transform.position = transform.position + transform.right;
             isCarryingObject = false;
 
-            OnObjectDropped?.Invoke(transform.position); // Trigger the event
+            OnObjectDropped?.Invoke(transform.position);
             portableObject = null;
         }
     }
+
 }

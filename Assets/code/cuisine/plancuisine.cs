@@ -6,21 +6,20 @@ public class plancuisine : MonoBehaviour
 {
     public GameObject plan;
     public PlayerController playerController;
-    private bool colision=false;
+    private bool colision = false;
+    private bool monsterAppeared = false;
+
     void Start()
     {
         plan.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
-        if (colision == true)
+        if (colision)
         {
             if (Input.GetButtonDown("Fire1"))
             {
-
                 plan.SetActive(true);
                 playerController.peutpasbouger = true;
             }
@@ -28,19 +27,20 @@ public class plancuisine : MonoBehaviour
             {
                 plan.SetActive(false);
                 playerController.peutpasbouger = false;
+                if (!monsterAppeared)
+                {
+                    StartCoroutine(StartMonsterAppearanceTimer());
+                }
             }
         }
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("joueur") )
+        if (other.gameObject.CompareTag("joueur"))
         {
             colision = true;
-            
         }
-      
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -50,4 +50,17 @@ public class plancuisine : MonoBehaviour
             colision = false;
         }
     }
+
+    IEnumerator StartMonsterAppearanceTimer()
+    {
+        yield return new WaitForSeconds(5f);
+        Monstre monster = FindObjectOfType<Monstre>();
+        if (monster != null)
+        {
+            monster.AppearInCuisine();
+            monsterAppeared = true;
+        }
+    }
 }
+
+

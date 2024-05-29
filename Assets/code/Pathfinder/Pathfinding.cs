@@ -25,7 +25,6 @@ public class Pathfinding : MonoBehaviour
             for (int i = 1; i < openSet.Count; i++)
             {
                 if (openSet[i].fCost < currentNode.fCost || (openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost))
-
                 {
                     currentNode = openSet[i];
                 }
@@ -41,8 +40,7 @@ public class Pathfinding : MonoBehaviour
 
             foreach (Node neighbour in grid.GetNeighbours(currentNode))
             {
-                if (!neighbour.walkable) closedSet.Contains(neighbour);
-                
+                if (!neighbour.walkable || closedSet.Contains(neighbour))
                 {
                     continue;
                 }
@@ -62,29 +60,33 @@ public class Pathfinding : MonoBehaviour
             }
         }
 
+        // Si aucun chemin n'a été trouvé, retourner null
         return null;
     }
+
+
     List<Node> RetracePath(Node startNode, Node endNode)
-    {
-        List<Node> path = new List<Node>();
-        Node currentNode = endNode;
-
-        while (currentNode != startNode)
         {
-            path.Add(currentNode);
-            currentNode = currentNode.parent;
+            List<Node> path = new List<Node>();
+            Node currentNode = endNode;
+
+            while (currentNode != startNode)
+            {
+                path.Add(currentNode);
+                currentNode = currentNode.parent;
+            }
+            path.Reverse();
+            return path;
         }
-        path.Reverse();
-        return path;
+
+        int GetDistance(Node nodeA, Node nodeB)
+        {
+            int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
+            int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
+
+            if (dstX > dstY)
+                return 14 * dstY + 10 * (dstX - dstY);
+            return 14 * dstX + 10 * (dstY - dstX);
+        }
     }
 
-    int GetDistance(Node nodeA, Node nodeB)
-    {
-        int dstX = Mathf.Abs(nodeA.gridX - nodeB.gridX);
-        int dstY = Mathf.Abs(nodeA.gridY - nodeB.gridY);
-
-        if (dstX > dstY)
-            return 14 * dstY + 10 * (dstX - dstY);
-        return 14 * dstX + 10 * (dstY - dstX);
-    }
-}

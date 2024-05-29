@@ -24,6 +24,10 @@ public class DetectionSalle : MonoBehaviour
         {
             salleActuelle = "Garage";
         }
+        else if (other.CompareTag("Salon"))
+        {
+            salleActuelle = "Salon";
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

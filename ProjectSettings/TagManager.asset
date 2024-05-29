@@ -22,6 +22,7 @@ TagManager:
   - interupteursalon2
   - interupteursalon3
   - interupteursalon4
+  - Salon
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - obstacles
   - Water
   - UI
-  - 
+  - Menu
   - 
   - 
   - 
