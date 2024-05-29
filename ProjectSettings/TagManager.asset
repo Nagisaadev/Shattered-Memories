@@ -18,6 +18,10 @@ TagManager:
   - Cuisine
   - SalleAManger
   - Garage
+  - interupteursalon1
+  - interupteursalon2
+  - interupteursalon3
+  - interupteursalon4
   layers:
   - Default
   - TransparentFX

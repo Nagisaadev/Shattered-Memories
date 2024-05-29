@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
     public bool isInCollisionWithCadrePetit = false;
     public string currentRoom;
 
+    public bool interupteursaloncolision1=false;
+    public bool interupteursaloncolision2 = false;
+    public bool interupteursaloncolision3 = false;
+    public bool interupteursaloncolision4 = false;
+
     // Event to notify when an object is dropped
     public static event Action<Vector2> OnObjectDropped;
 
@@ -155,6 +160,30 @@ public class PlayerController : MonoBehaviour
         {
             isInCollisionWithCadrePetit = true;
         }
+
+
+
+        if (other.gameObject.CompareTag("interupteursalon1"))
+        {
+           interupteursaloncolision1 = true;
+        }
+
+        if (other.gameObject.CompareTag("interupteursalon2"))
+        {
+            interupteursaloncolision2 = true;
+        }
+
+        if (other.gameObject.CompareTag("interupteursalon3"))
+        {
+            interupteursaloncolision3 = true;
+        }
+        if (other.gameObject.CompareTag("interupteursalon4"))
+        {
+            interupteursaloncolision3 = true;
+        }
+
+
+
     }
 
 
@@ -193,6 +222,24 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("cadrepetit"))
         {
             isInCollisionWithCadrePetit = false;
+        }
+
+
+        if (other.gameObject.CompareTag("interupteursalon1"))
+        {
+            interupteursaloncolision1 = false;
+        }
+        if (other.gameObject.CompareTag("interupteursalon2"))
+        {
+            interupteursaloncolision2 = false;
+        }
+        if (other.gameObject.CompareTag("interupteursalon3"))
+        {
+            interupteursaloncolision3 = false;
+        }
+        if (other.gameObject.CompareTag("interupteursalon4"))
+        {
+            interupteursaloncolision4 = false;
         }
     }
 
