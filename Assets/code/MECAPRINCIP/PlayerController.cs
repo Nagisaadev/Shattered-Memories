@@ -205,8 +205,10 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Exited trigger with Portable Object");
             isInCollisionWithPortableObject = false;
-            portableObject = null;
+            portableObject = null; // Réinitialiser portableObject
         }
+    
+
 
         if (other.gameObject.CompareTag("interupteur1"))
         {
@@ -257,19 +259,16 @@ public class PlayerController : MonoBehaviour
     {
         if (portableObject != null)
         {
-            portableObject.SetActive(true); // Réactiver l'objet
-            portableObject.transform.position = transform.position + transform.right; // Repositionner l'objet près du joueur
+            Debug.Log(portableObject);
+            portableObject.SetActive(true);
+            portableObject.transform.position = transform.position + transform.right; // Utiliser portableObject au lieu de obj
             isCarryingObject = false;
-
-            OnObjectDropped?.Invoke(portableObject.transform.position); // Déclencher l'événement
             portableObject = null;
-        }
-        else
-        {
-            Debug.LogWarning("Trying to drop a null object!");
         }
     }
 
-
-
 }
+
+
+
+
