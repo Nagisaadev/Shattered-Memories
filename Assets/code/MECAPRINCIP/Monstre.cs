@@ -15,13 +15,6 @@ public class Monstre : MonoBehaviour
     private Vector2 noiseLocation;
     private bool isNoiseDetected = false;
     private bool hasInvestigatedNoise = false;
-    private float noiseDetectionTime = 5f;
-    private float noiseTimer = 0f;
-    private float noiseInvestigationStartTime;
-    private float noiseInvestigationTime = 5f;
-    private float noiseInvestigationTimer = 0f;
-    private bool hasHeardNoise = false;
-    private Vector2 lastHeardNoisePosition;
 
     private Pathfinding pathfinding;
     private List<Node> path;
@@ -42,7 +35,9 @@ public class Monstre : MonoBehaviour
 
     public List<Transform> patrolPointsSalon; // Liste des points de patrouille pour le salon
     private bool hasAppearedInSalon = false;
-    
+
+    private Coroutine noiseInvestigationCoroutine;
+
     void Start()
     {
         pathfinding = FindObjectOfType<Pathfinding>();
@@ -103,7 +98,10 @@ public class Monstre : MonoBehaviour
         }
         else if (isNoiseDetected && !hasInvestigatedNoise)
         {
-            // Traiter le bruit détecté
+            if (noiseInvestigationCoroutine == null)
+            {
+                noiseInvestigationCoroutine = StartCoroutine(InvestigateNoise());
+            }
         }
         else if (hasInvestigatedNoise)
         {
@@ -115,11 +113,15 @@ public class Monstre : MonoBehaviour
         }
     }
 
-
-
     string DeterminerSalleActuelle()
     {
-        return GetComponent<DetectionSalle>().salleActuelle;
+        var detectionSalle = GetComponent<DetectionSalle>();
+        if (detectionSalle == null)
+        {
+            Debug.LogError("No DetectionSalle component found!");
+            return string.Empty;
+        }
+        return detectionSalle.salleActuelle;
     }
 
     void DetectPlayer()
@@ -136,8 +138,6 @@ public class Monstre : MonoBehaviour
             isPlayerDetected = false;
         }
     }
-
-
 
     void FollowPath()
     {
@@ -161,7 +161,6 @@ public class Monstre : MonoBehaviour
             }
         }
     }
-
 
     void Patrol()
     {
@@ -216,9 +215,11 @@ public class Monstre : MonoBehaviour
             noiseLocation = dropLocation;
             isNoiseDetected = true;
             hasInvestigatedNoise = false;
-            noiseTimer = 0f;
             targetIndex = 0;
             path = null;
+
+            // Logique pour le bruit spécifique du Buste
+            HandleNoise(dropLocation);
         }
         else
         {
@@ -226,9 +227,65 @@ public class Monstre : MonoBehaviour
         }
     }
 
+    public void HandleNoise(Vector2 noisePosition)
+    {
+        Debug.Log("Noise detected at: " + noisePosition);
+        isNoiseDetected = true;
+        noiseLocation = noisePosition;
+        hasInvestigatedNoise = false;
+        // Si une investigation de bruit est déjà en cours, arrêtez-la
+        if (noiseInvestigationCoroutine != null)
+        {
+            StopCoroutine(noiseInvestigationCoroutine);
+        }
+        // Lancez une nouvelle investigation de bruit
+        noiseInvestigationCoroutine = StartCoroutine(InvestigateNoise());
+    }
+
+    IEnumerator InvestigateNoise()
+    {
+        if (isNoiseDetected)
+        {
+            path = pathfinding.FindPath(transform.position, noiseLocation);
+            if (path != null && path.Count > 0)
+            {
+                while (targetIndex < path.Count)
+                {
+                    Node targetNode = path[targetIndex];
+                    Vector2 targetPosition = targetNode.worldPosition;
+                    transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+                    if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
+                    {
+                        targetIndex++;
+                    }
+                    yield return null;
+                }
+
+                Debug.Log("Monster reached the noise location. Waiting for 5 seconds.");
+                yield return new WaitForSeconds(5f);
+            }
+            else
+            {
+                Debug.LogWarning("Noise detected, but no valid path found!");
+            }
+
+            isNoiseDetected = false;
+            hasInvestigatedNoise = true;
+            noiseInvestigationCoroutine = null;
+            Debug.Log("Monster finished investigating the noise. Resuming patrol.");
+        }
+    }
+
     string DeterminerSalleMonstre()
     {
-        return GetComponent<DetectionSalle>().salleActuelle;
+        var detectionSalle = GetComponent<DetectionSalle>();
+        if (detectionSalle == null)
+        {
+            Debug.LogError("No DetectionSalle component found!");
+            return string.Empty;
+        }
+        return detectionSalle.salleActuelle;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -263,6 +320,7 @@ public class Monstre : MonoBehaviour
             }
         }
     }
+
 
     void TeleportToPlayerRoom()
     {
@@ -320,9 +378,8 @@ public class Monstre : MonoBehaviour
         transform.position = posSalon;
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
     }
-
-
-
 }
+
+
 
 

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 localScale;
     private bool isInCollisionWithCompteur = false;
     private bool isInCollisionWithCachette = false;
-    private bool isHidden = false; // Variable pour suivre l'état du joueur (caché ou non)
+    private bool isHidden = false; 
     private bool isInCollisionWithPortableObject = false;
     private GameObject portableObject = null;
     public GameObject obj;
@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public bool isInCollisionWithInterupteur3 = false;
     public bool isInCollisionWithCadrePetit = false;
     public string currentRoom;
+    public Monstre monstre;
+
 
     public bool interupteursaloncolision1=false;
     public bool interupteursaloncolision2 = false;
@@ -46,15 +48,15 @@ public class PlayerController : MonoBehaviour
         dijoncteur.SetActive(false);
     }
 
-
     void Update()
     {
         Debug.Log("L'objet est il porté : " + isCarryingObject);
-        Debug.Log(isInCollisionWithPortableObject);
+        Debug.Log(portableObject);
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        if (!isHidden || !uidijoncteur || !peutpasbouger)
+        if (!isHidden && !uidijoncteur && !peutpasbouger)
         {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * speed;
             rb.velocity = movement;
@@ -68,20 +70,11 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = localScale;
             }
 
-            if (rb.velocity == movement)
-            {
-                animator.SetBool("isrunning", true);
-            }
-
-            if (rb.velocity == new Vector2(0f, 0f))
-            {
-                animator.SetBool("isrunning", false);
-            }
+            animator.SetBool("isrunning", rb.velocity != Vector2.zero);
         }
-
-        if (isHidden || uidijoncteur || peutpasbouger)
+        else
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = Vector2.zero;
         }
 
         if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
@@ -90,61 +83,52 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.enabled = !isHidden;
             Debug.Log(isHidden ? "Hiding in Cachette" : "Leaving Cachette");
         }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (isCarryingObject)
             {
                 Debug.Log("F key pressed to drop the Portable Object");
-                DropObject(); // Passer portableObject à la fonction DropObject
+                DropObject();
             }
-
-        
-        else if (isInCollisionWithPortableObject && portableObject != null)
+            else if (portableObject != null)
             {
                 Debug.Log("F key pressed while in collision with Portable Object");
                 PickUpObject(portableObject);
             }
-        
-    }
-        Debug.Log(portableObject);
+        }
 
-        if (isInCollisionWithCompteur == true)
+        if (isInCollisionWithCompteur && Input.GetButtonDown("Fire1"))
         {
-            Debug.Log(Input.GetButtonDown("Fire1"));
-            if (Input.GetButtonDown("Fire1"))
-            {
-                Debug.Log("Fire1 pressed while in collision with Compteur");
-                dijoncteur.SetActive(true);
-                uidijoncteur = true;
-            }
-            if (Input.GetButtonDown("Cancel"))
-            {
-                dijoncteur.SetActive(false);
-                uidijoncteur = false;
-            }
+            dijoncteur.SetActive(true);
+            uidijoncteur = true;
+        }
+        if (uidijoncteur && Input.GetButtonDown("Cancel"))
+        {
+            dijoncteur.SetActive(false);
+            uidijoncteur = false;
         }
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("compteur"))
+        if (other.CompareTag("compteur"))
         {
             Debug.Log("Entered trigger with Compteur");
             isInCollisionWithCompteur = true;
         }
-        if (other.gameObject.CompareTag("cachette"))
+        if (other.CompareTag("cachette"))
         {
             Debug.Log("Entered trigger with Cachette");
             isInCollisionWithCachette = true;
         }
-        if (other.gameObject.CompareTag("portableObject"))
+        if (other.CompareTag("portableObject"))
         {
-            Debug.Log("Entered trigger with Portable Object: " + other.gameObject.name);
-            isInCollisionWithPortableObject = true;
+            Debug.Log("Entered trigger with Portable Object: " + other.name);
             portableObject = other.gameObject;
         }
-    
+
         if (other.gameObject.CompareTag("interupteur1"))
         {
             isInCollisionWithInterupteur1 = true;
@@ -191,23 +175,22 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("compteur"))
+        if (other.CompareTag("compteur"))
         {
             Debug.Log("Exited trigger with Compteur");
             isInCollisionWithCompteur = false;
         }
-        if (other.gameObject.CompareTag("cachette"))
+        if (other.CompareTag("cachette"))
         {
             Debug.Log("Exited trigger with Cachette");
             isInCollisionWithCachette = false;
         }
-        if (other.gameObject.CompareTag("portableObject"))
+        if (other.CompareTag("portableObject"))
         {
             Debug.Log("Exited trigger with Portable Object");
-            isInCollisionWithPortableObject = false;
-            portableObject = null; // Réinitialiser portableObject
+            portableObject = null;
         }
-    
+
 
 
         if (other.gameObject.CompareTag("interupteur1"))
@@ -246,26 +229,62 @@ public class PlayerController : MonoBehaviour
             interupteursaloncolision4 = false;
         }
     }
-
-
     void PickUpObject(GameObject obj)
     {
-        portableObject.SetActive(false);
-        
+        obj.SetActive(false);
         isCarryingObject = true;
+        portableObject = obj;
     }
 
     void DropObject()
     {
         if (portableObject != null)
         {
-            Debug.Log(portableObject);
             portableObject.SetActive(true);
-            portableObject.transform.position = transform.position + transform.right; // Utiliser portableObject au lieu de obj
+
+            // Determine drop position based on player's facing direction
+            Vector3 dropPosition = transform.position;
+            if (transform.localScale.x > 0) // Facing right
+            {
+                dropPosition += transform.right;
+            }
+            else // Facing left
+            {
+                dropPosition -= transform.right;
+            }
+
+            portableObject.transform.position = dropPosition;
+            HandleDroppedObject(portableObject);
             isCarryingObject = false;
             portableObject = null;
         }
     }
+
+    void HandleDroppedObject(GameObject obj)
+    {
+        // Check object type and handle accordingly
+        if (obj.name.Contains("Buste"))
+        {
+            // Make noise
+            Debug.Log("Dropping Buste, making noise");
+            // Faites appel à une méthode du monstre pour gérer le bruit
+            monstre.HandleNoise(obj.transform.position);
+        }
+        else if (obj.name.Contains("Carton"))
+        {
+            // No noise
+            Debug.Log("Dropping Carton, no noise");
+        }
+        else if (obj.name.Contains("Cadre"))
+        {
+            // Check for all photo pieces collected
+            Debug.Log("Dropping Cadre, checking conditions");
+            // Add code to check if all photo pieces are collected
+        }
+        // Notify about dropped object
+        OnObjectDropped?.Invoke(obj.transform.position);
+    }
+
 
 }
 
