@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 localScale;
     private bool isInCollisionWithCompteur = false;
     private bool isInCollisionWithCachette = false;
-    private bool isHidden = false; 
+    private bool isHidden = false;
     private bool isInCollisionWithPortableObject = false;
     private GameObject portableObject = null;
     public GameObject obj;
@@ -27,16 +27,16 @@ public class PlayerController : MonoBehaviour
     public bool isInCollisionWithCadrePetit = false;
     public string currentRoom;
     public Monstre monstre;
+    private bool busteNoiseMade = false;
 
-
-    public bool interupteursaloncolision1=false;
+    public bool interupteursaloncolision1 = false;
     public bool interupteursaloncolision2 = false;
     public bool interupteursaloncolision3 = false;
     public bool interupteursaloncolision4 = false;
 
     // Event to notify when an object is dropped
     public static event Action<Vector2> OnObjectDropped;
-    
+    public static event Action<Vector2> OnNoiseMade;
 
     void Start()
     {
@@ -110,7 +110,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("compteur"))
@@ -147,11 +146,9 @@ public class PlayerController : MonoBehaviour
             isInCollisionWithCadrePetit = true;
         }
 
-
-
         if (other.gameObject.CompareTag("interupteursalon1"))
         {
-           interupteursaloncolision1 = true;
+            interupteursaloncolision1 = true;
         }
 
         if (other.gameObject.CompareTag("interupteursalon2"))
@@ -167,11 +164,7 @@ public class PlayerController : MonoBehaviour
         {
             interupteursaloncolision3 = true;
         }
-
-
-
     }
-
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -191,8 +184,6 @@ public class PlayerController : MonoBehaviour
             portableObject = null;
         }
 
-
-
         if (other.gameObject.CompareTag("interupteur1"))
         {
             isInCollisionWithInterupteur1 = false;
@@ -211,7 +202,6 @@ public class PlayerController : MonoBehaviour
             isInCollisionWithCadrePetit = false;
         }
 
-
         if (other.gameObject.CompareTag("interupteursalon1"))
         {
             interupteursaloncolision1 = false;
@@ -229,8 +219,11 @@ public class PlayerController : MonoBehaviour
             interupteursaloncolision4 = false;
         }
     }
+
     void PickUpObject(GameObject obj)
     {
+        busteNoiseMade = false;
+
         obj.SetActive(false);
         isCarryingObject = true;
         portableObject = obj;
@@ -265,10 +258,22 @@ public class PlayerController : MonoBehaviour
         // Check object type and handle accordingly
         if (obj.name.Contains("Buste"))
         {
-            // Make noise
-            Debug.Log("Dropping Buste, making noise");
-            // Faites appel à une méthode du monstre pour gérer le bruit
-            monstre.HandleNoise(obj.transform.position);
+            // Make noise only if it hasn't been made yet
+            if (!busteNoiseMade)
+            {
+                // Make noise
+                Debug.Log("Dropping Buste, making noise");
+
+                // Add code to make noise
+                if (OnNoiseMade != null)
+                {
+                    // Generate noise at the position where the buste is dropped
+                    OnNoiseMade.Invoke(obj.transform.position);
+                }
+
+                // Mark that the noise has been made
+                busteNoiseMade = true;
+            }
         }
         else if (obj.name.Contains("Carton"))
         {
@@ -284,9 +289,8 @@ public class PlayerController : MonoBehaviour
         // Notify about dropped object
         OnObjectDropped?.Invoke(obj.transform.position);
     }
-
-
 }
+
 
 
 
