@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{537b0fe1-b3bf-4dd0-b211-ecf7e11fc0db}">
+		<property name="assetPath">
+			<value>locking door - sound effect.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.0865306122448981</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d7f79058-ddfd-4cb5-9611-b72489cbb0c8}</destination>
+		</relationship>
+	</object>
+</objects>

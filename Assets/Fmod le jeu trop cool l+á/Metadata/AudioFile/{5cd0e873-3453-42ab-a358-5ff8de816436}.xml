@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework.Interfaces;
+using NUnit.Framework.Internal;
+
+namespace UnityEngine.TestRunner.NUnitExtensions
+{
+    internal class OrderedTestSuiteModifier : ITestSuiteModifier
+    {
+        internal const string suiteIsReorderedProperty = "suiteIsReordered";
+        private string[] m_OrderedTestNames;
+        
+        public OrderedTestSuiteModifier(string[] orderedTestNames)
+        {
+            m_OrderedTestNames = orderedTestNames;
+        }
+
+        public TestSuite ModifySuite(TestSuite root)
+        {
+            var suite = new TestSuite(root.

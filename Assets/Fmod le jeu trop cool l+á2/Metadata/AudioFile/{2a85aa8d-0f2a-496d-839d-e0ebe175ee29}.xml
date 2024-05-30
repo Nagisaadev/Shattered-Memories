@@ -1,0 +1,25 @@
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.TestTools;
+using UnityEditor;
+using UnityEditorInternal;
+public class ProfileAnalyzerCaptureTests : ProfileAnalyzerBaseTest
+{
+    [UnityTest]
+    public IEnumerator PlayMode_Capture_ContainsNoDuplicates()
+    {
+        StartProfiler();
+
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+        yield return null;
+
+        StopProfiler();
+
+        // Seem to need one more frame to get the data transfered over so the profile analyzer can pull it.
+        yield return null;
+
+        

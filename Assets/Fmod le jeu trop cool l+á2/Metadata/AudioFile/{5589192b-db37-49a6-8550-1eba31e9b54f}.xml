@@ -1,0 +1,23 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+namespace Unity.EditorCoroutines.Editor
+{
+    /// <summary>
+    /// A handle to an EditorCoroutine, can be passed to <see cref="EditorCoroutineUtility">EditorCoroutineUtility</see> methods to control lifetime.
+    /// </summary>
+    public class EditorCoroutine
+    {
+        private struct YieldProcessor
+        {
+            enum DataType : byte
+            {
+                None = 0,
+                WaitForSeconds = 1,
+                EditorCoroutine = 2,
+                AsyncOP = 3,
+            }
+   

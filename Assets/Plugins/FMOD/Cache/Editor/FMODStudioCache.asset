@@ -1,0 +1,1129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8544018056810895891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Porte qui grince
+  m_EditorClassIdentifier: 
+  Path: event:/Porte qui grince
+  Guid:
+    Data1: 831131772
+    Data2: 1195130743
+    Data3: -2130192476
+    Data4: 61708100
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1100
+--- !u!114 &-7159305725624264099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Cris p\xE8re 3"
+  m_EditorClassIdentifier: 
+  Path: "event:/Cris p\xE8re 3"
+  Guid:
+    Data1: 1494585010
+    Data2: 1200384474
+    Data3: 580508560
+    Data4: 1506707925
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 740
+--- !u!114 &-7098029622380917825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/WAWAWAWAWA p\xE8re"
+  m_EditorClassIdentifier: 
+  Path: "event:/WAWAWAWAWA p\xE8re"
+  Guid:
+    Data1: -1536634911
+    Data2: 1116029401
+    Data3: -1431014514
+    Data4: -1546222110
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
+--- !u!114 &-6822929909482170647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Beep Beep Micro-onde
+  m_EditorClassIdentifier: 
+  Path: event:/Beep Beep Micro-onde
+  Guid:
+    Data1: 228074010
+    Data2: 1275648289
+    Data3: -1255613801
+    Data4: -695207302
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4251
+--- !u!114 &-6221945126883228256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interrupteur simple
+  m_EditorClassIdentifier: 
+  Path: event:/Interrupteur simple
+  Guid:
+    Data1: 1780049683
+    Data2: 1237818213
+    Data3: 371662235
+    Data4: -1254988647
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 110
+--- !u!114 &-6195627884569612748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Cris p\xE8re 2"
+  m_EditorClassIdentifier: 
+  Path: "event:/Cris p\xE8re 2"
+  Guid:
+    Data1: 1823224926
+    Data2: 1127577563
+    Data3: -1953588293
+    Data4: 132119582
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 660
+--- !u!114 &-6061098904084816206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Musique de fin
+  m_EditorClassIdentifier: 
+  Path: event:/Musique de fin
+  Guid:
+    Data1: 1797043291
+    Data2: 1268736630
+    Data3: -1903514459
+    Data4: 1099123189
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 45244
+--- !u!114 &-5874806521860080818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Porte v\xE9rouill\xE9e"
+  m_EditorClassIdentifier: 
+  Path: "event:/Porte v\xE9rouill\xE9e"
+  Guid:
+    Data1: -1845453113
+    Data2: 1337443671
+    Data3: -923163227
+    Data4: 283065431
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
+--- !u!114 &-5848946037419176088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Papier (prendre)
+  m_EditorClassIdentifier: 
+  Path: event:/Papier (prendre)
+  Guid:
+    Data1: -690296985
+    Data2: 1125006936
+    Data3: 1605888137
+    Data4: 1681398175
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &-5485394042873452140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: "Assets/Fmod le jeu trop cool l+\xE12/Build/Desktop/Master.bank"
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638526316640000000
+  FileSizes:
+  - Name: Desktop
+    Value: 14528768
+  Exists: 1
+--- !u!114 &-5484104497584129399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Lockey ouvert pour porte (porte entr\xE9e pour aller au salon)"
+  m_EditorClassIdentifier: 
+  Path: "event:/Lockey ouvert pour porte (porte entr\xE9e pour aller au salon)"
+  Guid:
+    Data1: -2049075314
+    Data2: 1231478779
+    Data3: -253803589
+    Data4: -2121263728
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-5413960173241243796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Chemin\xE9e"
+  m_EditorClassIdentifier: 
+  Path: "event:/Chemin\xE9e"
+  Guid:
+    Data1: -1185582075
+    Data2: 1205077835
+    Data3: -1668582506
+    Data4: 816562674
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 94827
+--- !u!114 &-5024207748111702847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Papier (poser)
+  m_EditorClassIdentifier: 
+  Path: event:/Papier (poser)
+  Guid:
+    Data1: 1727553855
+    Data2: 1189441993
+    Data3: 1897776829
+    Data4: -698078081
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
+--- !u!114 &-4877045048051145392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Son Menu
+  m_EditorClassIdentifier: 
+  Path: event:/Son Menu
+  Guid:
+    Data1: -1591978601
+    Data2: 1158355608
+    Data3: -1178085445
+    Data4: -1008514273
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 114500
+--- !u!114 &-2759977217126020642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Cris p\xE8re lors de l'entr\xE9e"
+  m_EditorClassIdentifier: 
+  Path: "event:/Cris p\xE8re lors de l'entr\xE9e"
+  Guid:
+    Data1: 1315101955
+    Data2: 1339703691
+    Data3: -272840774
+    Data4: 504159113
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2079
+--- !u!114 &-2159748310374924967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Pi\xE8ge qui stop et qui fais du bruit"
+  m_EditorClassIdentifier: 
+  Path: "event:/Pi\xE8ge qui stop et qui fais du bruit"
+  Guid:
+    Data1: 158558424
+    Data2: 1077674933
+    Data3: 1729215388
+    Data4: 2064496670
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 611
+--- !u!114 &-2049111761562881447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Interrupteur qui remonte
+  m_EditorClassIdentifier: 
+  Path: event:/Interrupteur qui remonte
+  Guid:
+    Data1: -1418015470
+    Data2: 1166698691
+    Data3: 163414403
+    Data4: 1994023156
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 300
+--- !u!114 &-1365541230661679899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Buste qui tombe
+  m_EditorClassIdentifier: 
+  Path: event:/Buste qui tombe
+  Guid:
+    Data1: -1633166822
+    Data2: 1250384189
+    Data3: 287763865
+    Data4: -1502373799
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1535
+--- !u!114 &-313808872372870710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Lampe torche On-Off
+  m_EditorClassIdentifier: 
+  Path: event:/Lampe torche On-Off
+  Guid:
+    Data1: 1237085980
+    Data2: 1273683735
+    Data3: 2012958627
+    Data4: -1512289379
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 436
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 4645868519063713876}
+  - {fileID: -5485394042873452140}
+  EditorEvents:
+  - {fileID: -2759977217126020642}
+  - {fileID: -5413960173241243796}
+  - {fileID: 3389760280354973751}
+  - {fileID: -2049111761562881447}
+  - {fileID: -6221945126883228256}
+  - {fileID: 4298843509607216861}
+  - {fileID: -6822929909482170647}
+  - {fileID: -1365541230661679899}
+  - {fileID: 1777916310943215245}
+  - {fileID: -313808872372870710}
+  - {fileID: 3549292264954571135}
+  - {fileID: 2744046529903322021}
+  - {fileID: -5024207748111702847}
+  - {fileID: 7257573472462839998}
+  - {fileID: 9129381654220204020}
+  - {fileID: 3546880729806838192}
+  - {fileID: 6987371001004100373}
+  - {fileID: -6061098904084816206}
+  - {fileID: -6195627884569612748}
+  - {fileID: 3945707876429453202}
+  - {fileID: -5848946037419176088}
+  - {fileID: 8626092042001658008}
+  - {fileID: 7110462487269680274}
+  - {fileID: -8544018056810895891}
+  - {fileID: 1081346017199481902}
+  - {fileID: 2464444334911447377}
+  - {fileID: -5484104497584129399}
+  - {fileID: -4877045048051145392}
+  - {fileID: 4752565318178568331}
+  - {fileID: 1139201680893793045}
+  - {fileID: -7159305725624264099}
+  - {fileID: -5874806521860080818}
+  - {fileID: 4748654506058746091}
+  - {fileID: 1681294692223826408}
+  - {fileID: 2608309973080165032}
+  - {fileID: -2159748310374924967}
+  - {fileID: -7098029622380917825}
+  - {fileID: 5670769517083969397}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: -5485394042873452140}
+  StringsBanks:
+  - {fileID: 4645868519063713876}
+  cacheTime: 638526316640000000
+  cacheVersion: 131617
+--- !u!114 &1081346017199481902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Item r\xE9cup"
+  m_EditorClassIdentifier: 
+  Path: "event:/Item r\xE9cup"
+  Guid:
+    Data1: 1277927305
+    Data2: 1100385717
+    Data3: -1445401717
+    Data4: -1707580624
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4245
+--- !u!114 &1139201680893793045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Compteur \xE9lec"
+  m_EditorClassIdentifier: 
+  Path: "event:/Compteur \xE9lec"
+  Guid:
+    Data1: 1188054169
+    Data2: 1158457653
+    Data3: 1532030362
+    Data4: -743418595
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 59950
+--- !u!114 &1681294692223826408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Pas monstre
+  m_EditorClassIdentifier: 
+  Path: event:/Pas monstre
+  Guid:
+    Data1: -1634413619
+    Data2: 1251478120
+    Data3: 319686553
+    Data4: 1831898285
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 580
+--- !u!114 &1777916310943215245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Meuble pour assiette
+  m_EditorClassIdentifier: 
+  Path: event:/Meuble pour assiette
+  Guid:
+    Data1: 1003202587
+    Data2: 1134705045
+    Data3: 1559462786
+    Data4: 837696907
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
+--- !u!114 &2464444334911447377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Cris p\xE8re 1"
+  m_EditorClassIdentifier: 
+  Path: "event:/Cris p\xE8re 1"
+  Guid:
+    Data1: 1779785354
+    Data2: 1284113373
+    Data3: -2061513575
+    Data4: 1915950446
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1400
+--- !u!114 &2608309973080165032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cachette dans table cuisine
+  m_EditorClassIdentifier: 
+  Path: event:/Cachette dans table cuisine
+  Guid:
+    Data1: -393714478
+    Data2: 1119929675
+    Data3: 1488467127
+    Data4: 1356191609
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4000
+--- !u!114 &2744046529903322021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Meuble couvert
+  m_EditorClassIdentifier: 
+  Path: event:/Meuble couvert
+  Guid:
+    Data1: 789983525
+    Data2: 1219823673
+    Data3: -1304342906
+    Data4: -1956799641
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1450
+--- !u!114 &3389760280354973751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Cris p\xE8re 4"
+  m_EditorClassIdentifier: 
+  Path: "event:/Cris p\xE8re 4"
+  Guid:
+    Data1: -358038770
+    Data2: 1115537640
+    Data3: -1480286321
+    Data4: 1844770774
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &3546880729806838192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bus
+  m_EditorClassIdentifier: 
+  Path: event:/Bus
+  Guid:
+    Data1: -50864558
+    Data2: 1176651901
+    Data3: 1186047147
+    Data4: -1283861534
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 105000
+--- !u!114 &3549292264954571135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bruit de pas joueur
+  m_EditorClassIdentifier: 
+  Path: event:/Bruit de pas joueur
+  Guid:
+    Data1: -749135067
+    Data2: 1221105028
+    Data3: -1944108919
+    Data4: -745387799
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 850
+--- !u!114 &3945707876429453202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Lustre qui tombe sur la vaisselle
+  m_EditorClassIdentifier: 
+  Path: event:/Lustre qui tombe sur la vaisselle
+  Guid:
+    Data1: -1360384414
+    Data2: 1278780561
+    Data3: 1967242663
+    Data4: -1786849896
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2100
+--- !u!114 &4298843509607216861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Voiture alarme
+  m_EditorClassIdentifier: 
+  Path: event:/Voiture alarme
+  Guid:
+    Data1: -1684785132
+    Data2: 1314015926
+    Data3: 1136999308
+    Data4: -1071376259
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7471
+--- !u!114 &4645868519063713876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: "Assets/Fmod le jeu trop cool l+\xE12/Build/Desktop/Master.strings.bank"
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638526316640000000
+  FileSizes:
+  - Name: Desktop
+    Value: 2724
+  Exists: 1
+--- !u!114 &4748654506058746091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cris mort monstre
+  m_EditorClassIdentifier: 
+  Path: event:/Cris mort monstre
+  Guid:
+    Data1: -219637301
+    Data2: 1126204573
+    Data3: 1917408421
+    Data4: -1545736439
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &4752565318178568331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Beep Beep cadenas compteur
+  m_EditorClassIdentifier: 
+  Path: event:/Beep Beep cadenas compteur
+  Guid:
+    Data1: -1512263273
+    Data2: 1074446659
+    Data3: -1954864247
+    Data4: 2009445828
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 250
+--- !u!114 &5670769517083969397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Lampe torche surcharge
+  m_EditorClassIdentifier: 
+  Path: event:/Lampe torche surcharge
+  Guid:
+    Data1: 989193970
+    Data2: 1191982773
+    Data3: -2094326144
+    Data4: -301406440
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3900
+--- !u!114 &6987371001004100373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Son Ambiance
+  m_EditorClassIdentifier: 
+  Path: event:/Son Ambiance
+  Guid:
+    Data1: -1671243946
+    Data2: 1244338254
+    Data3: -398309449
+    Data4: -810859137
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 87000
+--- !u!114 &7110462487269680274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Cadena ouvert pour garde manger
+  m_EditorClassIdentifier: 
+  Path: event:/Cadena ouvert pour garde manger
+  Guid:
+    Data1: 645640557
+    Data2: 1215640505
+    Data3: 1917133227
+    Data4: -1288008953
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 800
+--- !u!114 &7257573472462839998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Pi\xE8ge qui ralentit (slime)"
+  m_EditorClassIdentifier: 
+  Path: "event:/Pi\xE8ge qui ralentit (slime)"
+  Guid:
+    Data1: -1807437246
+    Data2: 1094281728
+    Data3: -447115603
+    Data4: 468667795
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 611
+--- !u!114 &8626092042001658008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Porte qui claque
+  m_EditorClassIdentifier: 
+  Path: event:/Porte qui claque
+  Guid:
+    Data1: 1998992234
+    Data2: 1175058251
+    Data3: 1249369477
+    Data4: -1098106419
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 544
+--- !u!114 &9129381654220204020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/Sonnerie t\xE9l\xE9phone"
+  m_EditorClassIdentifier: 
+  Path: "event:/Sonnerie t\xE9l\xE9phone"
+  Guid:
+    Data1: 2073702224
+    Data2: 1169289934
+    Data3: -453826370
+    Data4: 694260422
+  Banks:
+  - {fileID: -5485394042873452140}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 7500

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{218abce1-bf53-4a9c-a2f7-bd9e7b44fe01}">
+		<property name="assetPath">
+			<value>Steam Sound Effect - Pressure Hiss Release.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>94.511020408163262</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d7f79058-ddfd-4cb5-9611-b72489cbb0c8}</destination>
+		</relationship>
+	</object>
+</objects>

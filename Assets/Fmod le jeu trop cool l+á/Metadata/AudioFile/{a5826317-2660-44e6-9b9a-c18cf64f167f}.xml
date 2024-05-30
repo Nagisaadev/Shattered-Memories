@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a5826317-2660-44e6-9b9a-c18cf64f167f}">
+		<property name="assetPath">
+			<value>meuble assiette.flac</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>40.906458333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d7f79058-ddfd-4cb5-9611-b72489cbb0c8}</destination>
+		</relationship>
+	</object>
+</objects>

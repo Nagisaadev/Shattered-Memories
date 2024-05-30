@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ad6c91ee-a264-4a80-af4e-6385d6c82728}">
+		<property name="name">
+			<value>Refrain 2</value>
+		</property>
+		<relationship name="folder">
+			<destination>{067d38d7-baa1-4cd3-ae60-278df41eeb0a}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{72815fb8-d963-4c4c-bdb9-fb6879cb3c2b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{72815fb8-d963-4c4c-bdb9-fb6879cb3c2b}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

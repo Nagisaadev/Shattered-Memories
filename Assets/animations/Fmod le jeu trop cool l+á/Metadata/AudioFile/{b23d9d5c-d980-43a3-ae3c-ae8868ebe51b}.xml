@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+
+namespace UnityEngine.TestTools.Utils
+{
+    /// <summary>
+    /// Use this class to compare two Vector2 objects for
+    /// equality with NUnit constraints. Use the static
+    /// <see cref="Vector2EqualityComparer.Instance"/>
+    /// to have the calculation error value set to default 0.0001f.
+    /// For any other error value, instantiate a new comparer
+    /// object with the one argument constructor.
+    /// </summary>
+    public class Vector2EqualityComparer : IEqualityComparer<Vector2>
+    {
+        private const float k_DefaultError = 0.0001f;
+        private readonly float All

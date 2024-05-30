@@ -1,0 +1,12 @@
+using System.Collections.Generic;
+
+namespace UnityEngine.TestTools.Utils
+{
+    /// <summary>
+    /// Use these classes to compare two objects of the same type for equality within the range of a given tolerance using NUnit or custom constraints . Call Instance to apply the default calculation error value to the comparison.
+    /// </summary>
+    public class Vector2ComparerWithEqualsOperator : IEqualityComparer<Vector2>
+    {
+        private static readonly Vector2ComparerWithEqualsOperator m_Instance = new Vector2ComparerWithEqualsOperator();
+        /// <summary>
+        /// A singleton instance of the comparer with a prede

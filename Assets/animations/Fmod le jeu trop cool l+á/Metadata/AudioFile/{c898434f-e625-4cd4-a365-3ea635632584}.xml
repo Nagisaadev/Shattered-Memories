@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using NUnit.Framework;
+using UnityEngine.EventSystems;
+
+namespace UnityEngine.UI.Tests
+{
+    public static class UIBehaviourExtensions
+    {
+        private static object InvokeMethodAndRethrow(Type type, Object obj, string methodName, params object[] args)
+        {
+            BindingFlags flags = BindingFlags.Default;
+            flags |= BindingFlags.Public;
+            flags |= BindingFlags.NonPublic;
+            if (obj != null)
+                flags |= BindingFlags.Instance;
+            else
+                flags |= BindingFlags.Static;
+         

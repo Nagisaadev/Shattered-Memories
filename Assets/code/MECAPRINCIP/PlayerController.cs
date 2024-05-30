@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
-
+using FMODUnity;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f; // Vitesse de déplacement du joueur
@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     public bool interupteursaloncolision3 = false;
     public bool interupteursaloncolision4 = false;
 
+
+    public EventReference soundEvent;
     // Event to notify when an object is dropped
     public static event Action<Vector2> OnObjectDropped;
     
@@ -108,6 +110,13 @@ public class PlayerController : MonoBehaviour
             dijoncteur.SetActive(false);
             uidijoncteur = false;
         }
+
+
+        if (isHidden==true)
+        {
+            RuntimeManager.PlayOneShot(soundEvent, transform.position);
+        }
+
     }
 
 
