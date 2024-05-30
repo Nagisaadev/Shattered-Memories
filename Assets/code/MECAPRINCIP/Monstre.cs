@@ -15,6 +15,13 @@ public class Monstre : MonoBehaviour
     private Vector2 noiseLocation;
     private bool isNoiseDetected = false;
     private bool hasInvestigatedNoise = false;
+    private float noiseDetectionTime = 5f;
+    private float noiseTimer = 0f;
+    private float noiseInvestigationStartTime;
+    private float noiseInvestigationTime = 5f;
+    private float noiseInvestigationTimer = 0f;
+    private bool hasHeardNoise = false;
+    private Vector2 lastHeardNoisePosition;
 
     private Pathfinding pathfinding;
     private List<Node> path;
@@ -115,13 +122,7 @@ public class Monstre : MonoBehaviour
 
     string DeterminerSalleActuelle()
     {
-        var detectionSalle = GetComponent<DetectionSalle>();
-        if (detectionSalle == null)
-        {
-            Debug.LogError("No DetectionSalle component found!");
-            return string.Empty;
-        }
-        return detectionSalle.salleActuelle;
+        return GetComponent<DetectionSalle>().salleActuelle;
     }
 
     void DetectPlayer()
@@ -215,6 +216,7 @@ public class Monstre : MonoBehaviour
             noiseLocation = dropLocation;
             isNoiseDetected = true;
             hasInvestigatedNoise = false;
+            noiseTimer = 0f;
             targetIndex = 0;
             path = null;
 
@@ -229,17 +231,13 @@ public class Monstre : MonoBehaviour
 
     public void HandleNoise(Vector2 noisePosition)
     {
+        // Supposons que le bruit du Buste a été créé
         Debug.Log("Noise detected at: " + noisePosition);
         isNoiseDetected = true;
         noiseLocation = noisePosition;
         hasInvestigatedNoise = false;
-        // Si une investigation de bruit est déjà en cours, arrêtez-la
-        if (noiseInvestigationCoroutine != null)
-        {
-            StopCoroutine(noiseInvestigationCoroutine);
-        }
-        // Lancez une nouvelle investigation de bruit
-        noiseInvestigationCoroutine = StartCoroutine(InvestigateNoise());
+        noiseInvestigationStartTime = Time.time;
+        lastHeardNoisePosition = noisePosition;
     }
 
     IEnumerator InvestigateNoise()
@@ -279,13 +277,7 @@ public class Monstre : MonoBehaviour
 
     string DeterminerSalleMonstre()
     {
-        var detectionSalle = GetComponent<DetectionSalle>();
-        if (detectionSalle == null)
-        {
-            Debug.LogError("No DetectionSalle component found!");
-            return string.Empty;
-        }
-        return detectionSalle.salleActuelle;
+        return GetComponent<DetectionSalle>().salleActuelle;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -320,7 +312,6 @@ public class Monstre : MonoBehaviour
             }
         }
     }
-
 
     void TeleportToPlayerRoom()
     {

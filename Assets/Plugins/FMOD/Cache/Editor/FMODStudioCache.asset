@@ -258,7 +258,7 @@ MonoBehaviour:
   Path: "Assets/Fmod le jeu trop cool l+\xE12/Build/Desktop/Master.bank"
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638526316640000000
+  lastModified: 638526328554843201
   FileSizes:
   - Name: Desktop
     Value: 14528768
@@ -565,7 +565,7 @@ MonoBehaviour:
   - {fileID: -5485394042873452140}
   StringsBanks:
   - {fileID: 4645868519063713876}
-  cacheTime: 638526316640000000
+  cacheTime: 638526328554875076
   cacheVersion: 131617
 --- !u!114 &1081346017199481902
 MonoBehaviour:
@@ -906,7 +906,7 @@ MonoBehaviour:
   Path: "Assets/Fmod le jeu trop cool l+\xE12/Build/Desktop/Master.strings.bank"
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638526316640000000
+  lastModified: 638526328554875076
   FileSizes:
   - Name: Desktop
     Value: 2724
