@@ -104,17 +104,7 @@ public class Monstre : MonoBehaviour
                 Debug.LogWarning("Player detected, but no valid path found!");
             }
         }
-        else if (isNoiseDetected && !hasInvestigatedNoise)
-        {
-            if (noiseInvestigationCoroutine == null)
-            {
-                noiseInvestigationCoroutine = StartCoroutine(InvestigateNoise());
-            }
-        }
-        else if (hasInvestigatedNoise)
-        {
-            // Traiter l'investigation du bruit
-        }
+
         else
         {
             Patrol();
@@ -152,21 +142,25 @@ public class Monstre : MonoBehaviour
             Vector3 playerPosition = player.position;
             transform.position = Vector2.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
         }
-        else // Sinon, suivre le chemin normalement
+        else 
         {
+            
             if (targetIndex < path.Count)
             {
+                // Récupère le nœud cible du chemin
                 Node targetNode = path[targetIndex];
                 Vector2 targetPosition = targetNode.worldPosition;
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
                 if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
                 {
+                    // Si oui, passe à la cible suivante dans le chemin
                     targetIndex++;
                 }
             }
         }
     }
+
 
     void Patrol()
     {
@@ -177,14 +171,18 @@ public class Monstre : MonoBehaviour
         }
 
         Transform nextPatrolPoint = patrolPoints[currentPatrolIndex];
+
+        // Calcule le déplacement de l'objet vers le prochain point de patrouille
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, nextPatrolPoint.position, step);
 
+        // Vérifie si l'objet est suffisamment proche du prochain point de patrouille
         if (Vector2.Distance(transform.position, nextPatrolPoint.position) < 0.1f)
         {
             currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Count;
         }
     }
+
 
     void GoToClosestPatrolPoint()
     {
@@ -218,9 +216,7 @@ public class Monstre : MonoBehaviour
 
         if (salleMonstre == salleJoueur)
         {
-            noiseLocation = dropLocation;
-            isNoiseDetected = true;
-            hasInvestigatedNoise = false;
+
             noiseTimer = 0f;
             targetIndex = 0;
             path = null;
@@ -245,40 +241,7 @@ public class Monstre : MonoBehaviour
         lastHeardNoisePosition = noisePosition;
     }
 
-    IEnumerator InvestigateNoise()
-    {
-        if (isNoiseDetected)
-        {
-            path = pathfinding.FindPath(transform.position, noiseLocation);
-            if (path != null && path.Count > 0)
-            {
-                while (targetIndex < path.Count)
-                {
-                    Node targetNode = path[targetIndex];
-                    Vector2 targetPosition = targetNode.worldPosition;
-                    transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-                    if (Vector2.Distance(transform.position, targetPosition) < 0.1f)
-                    {
-                        targetIndex++;
-                    }
-                    yield return null;
-                }
-
-                Debug.Log("Monster reached the noise location. Waiting for 5 seconds.");
-                yield return new WaitForSeconds(5f);
-            }
-            else
-            {
-                Debug.LogWarning("Noise detected, but no valid path found!");
-            }
-
-            isNoiseDetected = false;
-            hasInvestigatedNoise = true;
-            noiseInvestigationCoroutine = null;
-            Debug.Log("Monster finished investigating the noise. Resuming patrol.");
-        }
-    }
 
     string DeterminerSalleMonstre()
     {
@@ -295,8 +258,13 @@ public class Monstre : MonoBehaviour
 
     void KillPlayer()
     {
-        Destroy(player.gameObject);
+        
         Debug.Log("Player has been killed!");
+
+        ///ANIMATION
+        player.gameObject.SetActive(false);
+
+        player.position = new Vector2(-0.25f, -0.56f);
     }
 
     void OnDrawGizmosSelected()
