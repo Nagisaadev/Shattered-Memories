@@ -44,6 +44,8 @@ public class Monstre : MonoBehaviour
     private bool hasAppearedInSalon = false;
 
     private Coroutine noiseInvestigationCoroutine;
+    private LightController playerLightController; // Ajout de la référence au PlayerLightController
+    private Renderer monstreRenderer;
 
     void Start()
     {
@@ -370,6 +372,5 @@ public class Monstre : MonoBehaviour
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
     }
 }
-
 
 

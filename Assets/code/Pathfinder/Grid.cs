@@ -70,8 +70,11 @@ public class Grid : MonoBehaviour
 
         int x = Mathf.FloorToInt((gridSizeX - 1) * percentX);
         int y = Mathf.FloorToInt((gridSizeY - 1) * percentY);
+
+        Debug.Log("Converted world position " + worldPosition + " to grid coordinates: (" + x + ", " + y + ")");
         return grid[x, y];
     }
+
 
 
     void OnDrawGizmos()
@@ -87,6 +90,8 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+
 }
 
 

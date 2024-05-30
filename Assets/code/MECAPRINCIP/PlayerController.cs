@@ -235,7 +235,6 @@ public class PlayerController : MonoBehaviour
         {
             portableObject.SetActive(true);
 
-            // Determine drop position based on player's facing direction
             Vector3 dropPosition = transform.position;
             if (transform.localScale.x > 0) // Facing right
             {
@@ -247,11 +246,17 @@ public class PlayerController : MonoBehaviour
             }
 
             portableObject.transform.position = dropPosition;
-            HandleDroppedObject(portableObject);
+
+            // Assurez-vous que l'événement de bruit est bien émis
+            Debug.Log("Dropping object at: " + dropPosition);
+            OnNoiseMade?.Invoke(portableObject.transform.position);
+
             isCarryingObject = false;
             portableObject = null;
         }
     }
+
+
 
     void HandleDroppedObject(GameObject obj)
     {
@@ -264,12 +269,8 @@ public class PlayerController : MonoBehaviour
                 // Make noise
                 Debug.Log("Dropping Buste, making noise");
 
-                // Add code to make noise
-                if (OnNoiseMade != null)
-                {
-                    // Generate noise at the position where the buste is dropped
-                    OnNoiseMade.Invoke(obj.transform.position);
-                }
+                // Trigger the noise event
+                OnNoiseMade?.Invoke(obj.transform.position);
 
                 // Mark that the noise has been made
                 busteNoiseMade = true;
@@ -289,6 +290,7 @@ public class PlayerController : MonoBehaviour
         // Notify about dropped object
         OnObjectDropped?.Invoke(obj.transform.position);
     }
+
 }
 
 
