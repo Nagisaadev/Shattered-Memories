@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class InterrupteurCollision1 : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class InterrupteurCollision1 : MonoBehaviour
     public Light2D light2D;
     public GameObject fond;
     public PlayerController playerController;
-
+    public bool allumer = false;
     private bool isInCollision = false;
 
     void Start()
@@ -52,7 +53,7 @@ public class InterrupteurCollision1 : MonoBehaviour
                 fond.SetActive(true);
                 sliderObject.SetActive(true);
                 playerController.peutpasbouger = true;
-
+                
             }
             if (Input.GetButtonDown("Cancel"))
             {
@@ -70,7 +71,7 @@ public class InterrupteurCollision1 : MonoBehaviour
 
             // Activer la lumière lorsque le joueur appuie sur le bouton Fire1
             light2D.enabled = true;
-
+            allumer = true;
             StartCoroutine(TurnOffLightAfterDelay(5.0f));
 
         }
@@ -81,6 +82,7 @@ public class InterrupteurCollision1 : MonoBehaviour
             // Éteindre la lumière après un délai
             light2D.enabled = false;
             slider.value = 0;
+            allumer = false;
         }
     }
 }

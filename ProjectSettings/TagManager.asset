@@ -23,6 +23,10 @@ TagManager:
   - interupteursalon3
   - interupteursalon4
   - Salon
+  - light1
+  - light2
+  - light3
+  - light4
   layers:
   - Default
   - TransparentFX

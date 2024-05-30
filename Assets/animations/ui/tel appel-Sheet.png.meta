@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 12f509e8eb34d7f4d8273eadddd32092
+guid: 4f1d4b42568f30b4cac7d4ed236cf88b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_0
+      name: tel appel-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 259
+        height: 579
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ecc72ddd15465bb43a1a4b069561cfff
-      internalID: -207838559
+      spriteID: 19633589bbf981f4790c7c9967ec6d8d
+      internalID: 449135507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_1
+      name: tel appel-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 259
         y: 0
-        width: 32
-        height: 32
+        width: 259
+        height: 579
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74c753356501a154b93aec86117c63ca
-      internalID: -516936101
+      spriteID: 86170a7ded7246c47aca1c81a14e8565
+      internalID: -234233473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_2
+      name: tel appel-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 518
         y: 0
-        width: 32
-        height: 32
+        width: 259
+        height: 579
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,92 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4e7be6e592a90b4c9765b652d8bb155
-      internalID: -1647281395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f07644239bdaaac45a13e8bf8deb592e
-      internalID: -1218805645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 76faf24b506852e4386fa034644fa7aa
-      internalID: 596345127
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6ff7c08009d2ae8468134dcf523ef4f1
-      internalID: 880139637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: nouvelle anim idle-Sheet-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddab3bd0c56e1b4409665276fd64ef8a
-      internalID: 1617732514
+      spriteID: 9518199b30038df438bf95aa67ef820e
+      internalID: -1461367137
       vertices: []
       indices: 
       edges: []
@@ -267,13 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      nouvelle anim idle-Sheet-Sheet_0: -207838559
-      nouvelle anim idle-Sheet-Sheet_1: -516936101
-      nouvelle anim idle-Sheet-Sheet_2: -1647281395
-      nouvelle anim idle-Sheet-Sheet_3: -1218805645
-      nouvelle anim idle-Sheet-Sheet_4: 596345127
-      nouvelle anim idle-Sheet-Sheet_5: 880139637
-      nouvelle anim idle-Sheet-Sheet_6: 1617732514
+      tel appel-Sheet_0: 449135507
+      tel appel-Sheet_1: -234233473
+      tel appel-Sheet_2: -1461367137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

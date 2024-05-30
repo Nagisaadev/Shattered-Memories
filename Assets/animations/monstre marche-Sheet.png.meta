@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4443777f33e8f0f4e99e5cce72c81ed1
-      internalID: 12424806
+      spriteID: 8f2fc2b1c97d9b44bbdf78322aa6e7c2
+      internalID: -1663853215
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d204beb0701d4ab42b48fe004a3a84b3
-      internalID: 518695248
+      spriteID: dcc363bce592af74696c729fcf275871
+      internalID: 217471941
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd7631877c0c5014283c74bbf2c3c5e3
-      internalID: -411165018
+      spriteID: 7dcc1481214ea584995c29f5955a75b6
+      internalID: -2114392235
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 912d939f2cc71764e8491a3e8b477331
-      internalID: 483449193
+      spriteID: 41a09443813b91946bd05e9751062746
+      internalID: 1986324999
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      monstre marche-Sheet_0: 12424806
-      monstre marche-Sheet_1: 518695248
-      monstre marche-Sheet_2: -411165018
-      monstre marche-Sheet_3: 483449193
+      monstre marche-Sheet_0: -1663853215
+      monstre marche-Sheet_1: 217471941
+      monstre marche-Sheet_2: -2114392235
+      monstre marche-Sheet_3: 1986324999
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

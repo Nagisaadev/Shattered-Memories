@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject obj;
     private bool isCarryingObject = false;
     public GameObject player;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public bool activation = false;
     public GameObject dijoncteur;
     private Animator animator;
@@ -77,7 +77,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.velocity = Vector2.zero;
+            animator.SetBool("isrunning",false);
         }
+
+       
+
 
         if (isInCollisionWithCachette && Input.GetKeyDown(KeyCode.E))
         {
@@ -117,6 +121,14 @@ public class PlayerController : MonoBehaviour
             RuntimeManager.PlayOneShot(soundEvent, transform.position);
         }
 
+        if (monstre.iskilled)
+        {
+            spriteRenderer.enabled = false;
+        }
+        if (!monstre.iskilled)
+        {
+            spriteRenderer.enabled = true;
+        }
     }
 
 

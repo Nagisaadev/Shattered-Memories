@@ -42,9 +42,23 @@ public class Monstre : MonoBehaviour
 
     public List<Transform> patrolPointsSalon; // Liste des points de patrouille pour le salon
     private bool hasAppearedInSalon = false;
-
+    private Animator animator;
     private Coroutine noiseInvestigationCoroutine;
+    public bool iskilled=false;
+    public PlayerController playerController;
 
+   public float life=3;
+    public float dureeDescendre = 3.0f; // Durée de la transition de l'opacité
+    private SpriteRenderer spriteRenderer;
+    public float invincibilityDuration = 4.0f;
+    private bool isInvincible = false;
+
+    public InterrupteurCollision1 InterrupteurCollision1;
+    public InterrupteurCollision1 InterrupteurCollision2;
+    public InterrupteurCollision1 InterrupteurCollision3;
+    public InterrupteurCollision1 InterrupteurCollision4;
+
+    public LightController flashlight;
     void Start()
     {
         pathfinding = FindObjectOfType<Pathfinding>();
@@ -55,6 +69,8 @@ public class Monstre : MonoBehaviour
             Debug.LogError("Aucun joueur trouvé !");
         }
         boutdephoto.PhotoCollectedEvent += OnPhotoCollected;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -108,6 +124,24 @@ public class Monstre : MonoBehaviour
         else
         {
             Patrol();
+        }
+
+        if (life<=0f)
+        {
+            StartCoroutine(DescendreOpaciteCoroutine());
+        }
+
+        if (flashlight.isLightOn&&!iskilled)
+        {
+            spriteRenderer.enabled = true;
+        }
+        if (!flashlight.isLightOn && !iskilled)
+        {
+            spriteRenderer.enabled = false;
+        }
+        else
+        {
+            spriteRenderer.enabled = true;
         }
     }
     void OnPhotoCollected()
@@ -253,6 +287,7 @@ public class Monstre : MonoBehaviour
         if (collision.gameObject.CompareTag("joueur"))
         {
             KillPlayer();
+
         }
     }
 
@@ -262,10 +297,25 @@ public class Monstre : MonoBehaviour
         Debug.Log("Player has been killed!");
 
         ///ANIMATION
-        player.gameObject.SetActive(false);
-
-        player.position = new Vector2(-0.25f, -0.56f);
+        iskilled= true;
+        playerController.peutpasbouger = true;
+        animator.SetBool("toucher",true);
+        StartCoroutine(StartTimer());
     }
+
+
+
+    IEnumerator StartTimer()
+    {
+        yield return new WaitForSeconds(3);
+        iskilled = false;
+        player.position = new Vector2(-0.25f, -0.56f);
+        animator.SetBool("toucher", false);
+        playerController.peutpasbouger =false;
+    }
+
+
+
 
     void OnDrawGizmosSelected()
     {
@@ -348,6 +398,71 @@ public class Monstre : MonoBehaviour
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
     }
 
+
+
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.CompareTag("light1") && !isInvincible&& !InterrupteurCollision1.allumer)
+        {
+            StartCoroutine(TakeDamage());
+        }
+        if (other.CompareTag("light2") && !isInvincible && !InterrupteurCollision2.allumer)
+        {
+            StartCoroutine(TakeDamage());
+        }
+        if (other.CompareTag("light3") && !isInvincible && !InterrupteurCollision3.allumer)
+        {
+            StartCoroutine(TakeDamage());
+        }
+        if (other.CompareTag("light4") && !isInvincible && !InterrupteurCollision4.allumer)
+        {
+            StartCoroutine(TakeDamage());
+        }
+    }
+
+    IEnumerator TakeDamage()
+    {
+        life -= 1;
+        isInvincible = true;
+
+        // Attendre la durée d'invincibilité
+        yield return new WaitForSeconds(invincibilityDuration);
+
+        isInvincible = false;
+    }
+
+
+    IEnumerator DescendreOpaciteCoroutine()
+    {
+        // Opacité initiale
+        float opaciteInitiale = spriteRenderer.color.a;
+        // Temps écoulé
+        float tempsEcoule = 0f;
+
+        while (tempsEcoule < dureeDescendre)
+        {
+            // Calculer le ratio de progression
+            float ratio = tempsEcoule / dureeDescendre;
+            // Calculer la nouvelle opacité en fonction du ratio
+            float nouvelleOpacite = Mathf.Lerp(opaciteInitiale, 0f, ratio);
+            // Créer une nouvelle couleur avec la nouvelle opacité
+            Color nouvelleCouleur = spriteRenderer.color;
+            nouvelleCouleur.a = nouvelleOpacite;
+            // Appliquer la nouvelle couleur au sprite
+            spriteRenderer.color = nouvelleCouleur;
+
+            // Attendre un frame
+            yield return null;
+            // Mettre à jour le temps écoulé
+            tempsEcoule += Time.deltaTime;
+        }
+
+        // Une fois la transition terminée, désactiver le GameObject
+        gameObject.SetActive(false);
+    }
 }
 
 
