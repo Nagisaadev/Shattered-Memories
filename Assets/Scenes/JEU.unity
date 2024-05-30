@@ -308,6 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11290219}
   - component: {fileID: 11290220}
+  - component: {fileID: 11290221}
   m_Layer: 0
   m_Name: "int\xE9rupteur (2)"
   m_TagString: interupteursalon3
@@ -375,6 +376,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &11290221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11290218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90002853420842041a0ce47a3852c663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1158992785}
+  sliderObject: {fileID: 1158992783}
+  light2D: {fileID: 1119091270}
+  fond: {fileID: 1839952003}
+  playerController: {fileID: 1842313314}
 --- !u!1 &23828187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,6 +2240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236793167}
   - component: {fileID: 236793168}
+  - component: {fileID: 236793169}
   m_Layer: 0
   m_Name: "int\xE9rupteur (3)"
   m_TagString: interupteursalon4
@@ -2289,6 +2308,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &236793169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236793166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90002853420842041a0ce47a3852c663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 289811539}
+  sliderObject: {fileID: 289811537}
+  light2D: {fileID: 1727779295}
+  fond: {fileID: 1839952003}
+  playerController: {fileID: 1842313314}
 --- !u!1 &244059037
 GameObject:
   m_ObjectHideFlags: 0
@@ -4429,8 +4465,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 0.5760576
+    height: 0.7535322
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -4655,8 +4691,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 2.472059, y: -1.4067469, z: 0}
-    m_Extent: {x: 3.2994592, y: 5.230153, z: 0}
+    m_Center: {x: 2.4775, y: -1.4098468, z: 0}
+    m_Extent: {x: 3.3021002, y: 5.233253, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -5413,8 +5449,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.77345, y: 1.46115, z: 0}
-    m_Extent: {x: 6.0947504, y: 3.94975, z: 0}
+    m_Center: {x: 4.7759323, y: 1.4587998, z: 0}
+    m_Extent: {x: 6.090768, y: 3.947, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -6749,8 +6785,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.0936, y: -1.6087, z: 0}
-    m_Extent: {x: 1.9674001, y: 2.7938, z: 0}
+    m_Center: {x: -1.0935, y: -1.6067, z: 0}
+    m_Extent: {x: 1.9703001, y: 2.7915, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -7317,6 +7353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 791236279}
   - component: {fileID: 791236280}
+  - component: {fileID: 791236281}
   m_Layer: 0
   m_Name: "int\xE9rupteur (1)"
   m_TagString: interupteursalon2
@@ -7384,6 +7421,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &791236281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791236278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90002853420842041a0ce47a3852c663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1902668953}
+  sliderObject: {fileID: 1902668951}
+  light2D: {fileID: 1964798579}
+  fond: {fileID: 1839952003}
+  playerController: {fileID: 1842313314}
 --- !u!1 &792373945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8927,8 +8981,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.7132225, y: 0.6403973, z: 0}
-    m_Extent: {x: 7.3149776, y: 5.7538977, z: 0}
+    m_Center: {x: 4.711023, y: 0.64345455, z: 0}
+    m_Extent: {x: 7.312778, y: 5.7532454, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -9554,8 +9608,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1904999, y: -0.7170501, z: 0}
-    m_Extent: {x: 1.8275, y: 1.65925, z: 0}
+    m_Center: {x: -1.1949999, y: -0.71809995, z: 0}
+    m_Extent: {x: 1.8297, y: 1.6539, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -9839,8 +9893,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 14.191746, y: -10.785614, z: 0}
-    m_Extent: {x: 15.82991, y: 16.533285, z: 0}
+    m_Center: {x: 14.19355, y: -10.783701, z: 0}
+    m_Extent: {x: 15.8342495, y: 16.5406, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10524,8 +10578,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.9442377, y: -1.91615, z: 0}
-    m_Extent: {x: 6.3829374, y: 3.0757499, z: 0}
+    m_Center: {x: 4.9471, y: -1.9143999, z: 0}
+    m_Extent: {x: 6.3819003, y: 3.0777, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10696,8 +10750,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.1893501, y: -0.7121501, z: 0}
-    m_Extent: {x: 1.82425, y: 1.65135, z: 0}
+    m_Center: {x: -1.1996, y: -0.70984995, z: 0}
+    m_Extent: {x: 1.8258, y: 1.65195, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10726,6 +10780,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1124065643}
   - component: {fileID: 1124065644}
+  - component: {fileID: 1124065645}
   m_Layer: 0
   m_Name: "int\xE9rupteur"
   m_TagString: interupteursalon1
@@ -10793,6 +10848,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1124065645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124065642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90002853420842041a0ce47a3852c663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1878955007}
+  sliderObject: {fileID: 1878955005}
+  light2D: {fileID: 1003549230}
+  fond: {fileID: 1839952003}
+  playerController: {fileID: 1842313314}
 --- !u!1 &1133737448
 GameObject:
   m_ObjectHideFlags: 0
@@ -15323,8 +15395,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 4.7102003, y: 0.64225197, z: 0}
-    m_Extent: {x: 7.3136005, y: 5.752043, z: 0}
+    m_Center: {x: 4.70865, y: 0.6441045, z: 0}
+    m_Extent: {x: 7.32025, y: 5.7538953, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -15727,8 +15799,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.02699995, y: -0.048349977, z: 0}
-    m_Extent: {x: 2.0967, y: 2.0216498, z: 0}
+    m_Center: {x: -0.020799994, y: -0.045700014, z: 0}
+    m_Extent: {x: 2.1036, y: 2.0254, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -15794,8 +15866,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 5.039399, y: 0.07818389, z: 0}
-    m_Extent: {x: 9.6676, y: 6.4658566, z: 0}
+    m_Center: {x: 5.0427494, y: 0.08016348, z: 0}
+    m_Extent: {x: 9.664249, y: 6.4678364, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -17476,8 +17548,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.19535, y: -0.71155006, z: 0}
-    m_Extent: {x: 1.81645, y: 1.6496501, z: 0}
+    m_Center: {x: -1.1908, y: -0.71854997, z: 0}
+    m_Extent: {x: 1.8215001, y: 1.6544499, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -17641,8 +17713,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 16.515194, y: 0.7203549, z: 0}
-    m_Extent: {x: 2.6235933, y: 3.3462548, z: 0}
+    m_Center: {x: 16.524773, y: 0.7192049, z: 0}
+    m_Extent: {x: 2.6233282, y: 3.347405, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -19862,8 +19934,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 5.001178, y: 1.5298388, z: 0}
-    m_Extent: {x: 6.783922, y: 4.7540607, z: 0}
+    m_Center: {x: 5.004828, y: 1.532639, z: 0}
+    m_Extent: {x: 6.7875724, y: 4.756861, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -20799,8 +20871,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.19865, y: -0.71054995, z: 0}
-    m_Extent: {x: 1.82525, y: 1.65565, z: 0}
+    m_Center: {x: -1.1905501, y: -0.70745003, z: 0}
+    m_Extent: {x: 1.82635, y: 1.65565, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
