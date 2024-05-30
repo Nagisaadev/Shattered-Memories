@@ -54,6 +54,7 @@ public class Monstre : MonoBehaviour
         {
             Debug.LogError("Aucun joueur trouvé !");
         }
+        boutdephoto.PhotoCollectedEvent += OnPhotoCollected;
     }
 
     void OnEnable()
@@ -119,7 +120,11 @@ public class Monstre : MonoBehaviour
             Patrol();
         }
     }
-
+    void OnPhotoCollected()
+    {
+        // Apparition du monstre une fois que la photo est ramassée
+        TeleportToGarage();
+    }
     string DeterminerSalleActuelle()
     {
         return GetComponent<DetectionSalle>().salleActuelle;
@@ -369,6 +374,12 @@ public class Monstre : MonoBehaviour
         transform.position = posSalon;
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
     }
+    public void TeleportToGarage()
+    {
+        transform.position = porteGarage;
+        Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
+    }
+
 }
 
 

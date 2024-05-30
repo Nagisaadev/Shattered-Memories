@@ -63,6 +63,9 @@ TagManager:
   - name: decort
     uniqueID: 111433253
     locked: 0
+  - name: monstre
+    uniqueID: 3756422587
+    locked: 0
   - name: objets
     uniqueID: 3516949713
     locked: 0
