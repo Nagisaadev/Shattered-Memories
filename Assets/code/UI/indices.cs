@@ -23,6 +23,7 @@ public class indices : MonoBehaviour
 
     void dialogue()
     {
+        letexte.enabled = true;
         StartCoroutine(TypeLine());
     }
     IEnumerator TypeLine()
@@ -32,10 +33,12 @@ public class indices : MonoBehaviour
            letexte.text += c;
             yield return new WaitForSeconds(textspeed);
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         {
+            letexte.text = " ";
             letexte.enabled = false;
             fond.SetActive(false);
+
         }
     }
 
