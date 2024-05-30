@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 
 public class Monstre : MonoBehaviour
 {
+    public EventReference soundEvent;
     public Transform player;
     public float speed = 2f;
     public float detectionRange = 5f;
@@ -36,6 +38,7 @@ public class Monstre : MonoBehaviour
     public Vector2 porteSalleAManger;
     public Vector2 porteGarage;
     public Vector2 posSalon;
+
 
     private Coroutine apparitionCoroutine;
     private bool hasAppearedInCuisine = false;
@@ -375,6 +378,7 @@ public class Monstre : MonoBehaviour
 
         transform.position = targetPosition;
         Debug.Log("Le monstre est apparu à la porte de la salle: " + salleActuelle + " à la position: " + targetPosition);
+        
     }
 
     public void AppearInCuisine()
@@ -384,6 +388,7 @@ public class Monstre : MonoBehaviour
             hasAppearedInCuisine = true;
             transform.position = porteCuisine;
             Debug.Log("Le monstre est apparu à la porte de la cuisine.");
+            RuntimeManager.PlayOneShot(soundEvent, transform.position);
         }
     }
 
@@ -391,11 +396,13 @@ public class Monstre : MonoBehaviour
     {
         transform.position = posSalon;
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
+        RuntimeManager.PlayOneShot(soundEvent, transform.position);
     }
     public void TeleportToGarage()
     {
         transform.position = porteGarage;
         Debug.Log("Le monstre a été téléporté au salon à la position: " + posSalon);
+        RuntimeManager.PlayOneShot(soundEvent, transform.position);
     }
 
 
