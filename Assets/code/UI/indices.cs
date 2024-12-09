@@ -5,7 +5,7 @@ using TMPro;
 public class indices : MonoBehaviour
 {
     public TextMeshProUGUI letexte;
-    public float textspeed;
+    public float textspeed=0.05f;
     public string text;
     public GameObject fond;
     public int nombredepassage=0;

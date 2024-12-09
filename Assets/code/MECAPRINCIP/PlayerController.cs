@@ -1,10 +1,10 @@
 using UnityEngine;
-using System.Collections;
+
 using System;
 using FMODUnity;
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f; // Vitesse de déplacement du joueur
+    public float speed = 7f; // Vitesse de déplacement du joueur
     private Rigidbody2D rb;
     private Vector3 localScale;
     private bool isInCollisionWithCompteur = false;

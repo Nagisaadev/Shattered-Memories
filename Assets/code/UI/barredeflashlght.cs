@@ -7,7 +7,7 @@ public class barredeflashlght : MonoBehaviour
 {
     public LightController lightController;
     public Slider slider;
-    public float maxTime = 10f;
+    public float maxTime = 15f;
     private float currentTime;
     private float timeSinceOff = 0f;
     private bool surchaufe = false;
@@ -40,7 +40,7 @@ public class barredeflashlght : MonoBehaviour
         {
             currentTime = Mathf.Clamp(currentTime, 0f, maxTime);
             timeSinceOff += Time.deltaTime;
-            if (timeSinceOff >= 3f)
+            if (timeSinceOff >= 1.5f)
             {
                 currentTime += Time.deltaTime;
                 slider.value = currentTime / maxTime;
@@ -58,7 +58,7 @@ public class barredeflashlght : MonoBehaviour
             lightController.isLightOn = false;
             currentTime = Mathf.Clamp(currentTime, 0f, maxTime);
             timeSinceOff += Time.deltaTime;
-            if (timeSinceOff >= 5f)
+            if (timeSinceOff >= 0.5f)
             {
                 currentTime += Time.deltaTime;
                 slider.value = currentTime / maxTime;
